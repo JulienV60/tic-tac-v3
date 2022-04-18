@@ -1,8 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getCookies } from "cookies-next";
-import { userProfil } from "../../../../src/userInfos";
-import jwt_decode from "jwt-decode";
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse

@@ -1,8 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getCookies } from "cookies-next";
 import { getDatabase } from "../../../src/database";
-import { access } from "fs";
-import moment from "moment";
+
 import jwt_decode from "jwt-decode";
 
 export default async function handler(
