@@ -1,10 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getCookies } from "cookies-next";
 import moment from "moment";
 import { getDatabase } from "../../../../../src/database";
 import { ObjectId } from "mongodb";
-import jwt_decode from "jwt-decode";
-import { userProfil } from "../../../../../src/userInfos";
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse

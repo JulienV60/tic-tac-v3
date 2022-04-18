@@ -1,10 +1,6 @@
 import { GetServerSideProps } from "next";
 import React from "react";
 import { Layout } from "../../components/LayoutCollab";
-import moment from "moment";
-
-import { AnyError } from "mongodb";
-import { PrecisionManufacturing } from "@mui/icons-material";
 import jwt_decode from "jwt-decode";
 import PageNotFound from "../../components/PageNotFound";
 import { userProfil } from "../../src/userInfos";
@@ -45,7 +41,6 @@ export default function Kikela(props: any) {
         method: "POST",
         body: JSON.stringify({ nom: nom, prenom: prenom }),
       }).then((result) => result.json());
-
 
       if (test === true) {
         setDispo("Present sur la base du planning");

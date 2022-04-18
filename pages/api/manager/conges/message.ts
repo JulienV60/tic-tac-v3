@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getCookies } from "cookies-next";
 import jwt_decode from "jwt-decode";
 import { userId, userProfil } from "../../../../src/userInfos";
 import { getDatabase } from "../../../../src/database";

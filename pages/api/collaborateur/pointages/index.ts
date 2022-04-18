@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import jwt_decode from "jwt-decode";
 import moment from "moment";
-import { v4 as uuidv4 } from "uuid";
 import { userId, userProfil } from "../../../../src/userInfos";
 import { getDatabase } from "../../../../src/database";
 export default async function handler(
