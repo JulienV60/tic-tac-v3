@@ -9,6 +9,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
+    console.log("hello");
     const accessTokken = req.cookies.IdToken;
     const data = JSON.parse(req.body);
     const heureMatin = new Date(data.heureMatin).toString();
