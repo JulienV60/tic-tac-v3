@@ -12,6 +12,7 @@ import { Layout } from "../../components/LayoutCollab";
 import { userProfil } from "../../src/userInfos";
 import jwt_decode from "jwt-decode";
 import moment from "moment";
+import { Form } from "react-bootstrap";
 
 export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
   const accessTokken = req.cookies.IdToken;
@@ -121,10 +122,12 @@ export default function Pointages(props: any) {
     <div>
       <Layout />
       <form className="form-example-pointages container">
-        <div className="container p-5 my-5 border"
-        style={{
-          backgroundColor: "#2f9dac",
-        }}>
+        <div
+          className="container p-5 my-5 border"
+          style={{
+            backgroundColor: "#2f9dac",
+          }}
+        >
           <div className="form-example-jour">
             <label className="LabelPointagesHoraires">
               Jour
@@ -287,13 +290,20 @@ export default function Pointages(props: any) {
                   </div>
                   <div className="MotifPointages">
                     <p>Motif: </p>
+
                     <select
+                      className="form-select"
                       id="motifs"
                       name="motifs"
                       onChange={(event) => {
                         motifChange(event.target.value);
                       }}
+                      aria-label="Default select example"
                     >
+                      {" "}
+                      <option aria-label="Default select example" selected>
+                        Motifs
+                      </option>
                       <option value="medicale">Médicale</option>
                       <option value="familiale">Familiale</option>
                       <option value="administratif">Administratif</option>{" "}
@@ -314,7 +324,8 @@ export default function Pointages(props: any) {
                 <button
                   onClick={sendPointage}
                   type="button"
-                  className="boutonValidation btn btn-primary"
+                  className="boutonValidation btn btn-light"
+                  style={{ color: "#2f9dac" }}
                 >
                   Valider
                 </button>
