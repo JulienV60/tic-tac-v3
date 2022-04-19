@@ -1,10 +1,6 @@
 import { GetServerSideProps } from "next";
 import React from "react";
 import LayoutManager from "../../components/LayoutManager";
-import moment from "moment";
-
-import { AnyError } from "mongodb";
-import { PrecisionManufacturing } from "@mui/icons-material";
 import jwt_decode from "jwt-decode";
 import PageNotFound from "../../components/PageNotFound";
 import { userProfil } from "../../src/userInfos";
@@ -58,30 +54,21 @@ export default function Kikela(props: any) {
 
   if (props.profileUser === "Manager") {
     return (
-      <div>
-        <LayoutManager>
-          {/* <div className="parent">
-          <form>
-              <div className="div1">Entrez votre Nom</div>
-              <div className="div2"></div>
-              <div className="div3">Entrez votre Prénom</div>
-              <div className="div4"></div>
-            </form>
-          </div> */}
-
-          <div>
+      <LayoutManager>
+        <div className="p-5">
+          <div className="p-5">
             <div
-              className="container p-5 my-5 border"
+              className="container p-5 my-5 border rounded"
               style={{
                 backgroundColor: "#2f9dac",
               }}
             >
-              <form className="">
-                <div className="row d-flex justify-content-between">
-                  <div className="col w-75" style={{ marginLeft: "20rem" }}>
+              <form className="d-flex justify-content-center ">
+                <div className="row d-flex w-75">
+                  <div className="col w-75 ">
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control "
                       placeholder="Entrer votre nom"
                       name="nom"
                       onChange={(event) => {
@@ -89,25 +76,24 @@ export default function Kikela(props: any) {
                       }}
                     />
                   </div>
-                  <div className="col">
+                  <div className="col w-75">
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="Entrer votre Prenom"
+                      placeholder="Entrer votre prénom"
                       name="prenom"
                       onChange={(event) => {
                         setPrenom(event.target.value);
                       }}
                     />
                   </div>
-                  <div className="col">
+                  <div className="col w-25">
                     <button
                       onClick={handleSubmit}
                       type="button"
-                      className="btn "
-                      style={{ backgroundColor: "white", color: "#2f9dac" }}
+                      className="btn btn-primary "
                     >
-                      Submit
+                      Rechercher
                     </button>
                   </div>
                 </div>
@@ -115,7 +101,7 @@ export default function Kikela(props: any) {
             </div>
 
             <div
-              className="container p-5 my-5 border"
+              className="container p-5 my-5 border rounded"
               style={{
                 backgroundColor: "#2f9dac",
               }}
@@ -127,8 +113,8 @@ export default function Kikela(props: any) {
               </ul>
             </div>
           </div>
-        </LayoutManager>
-      </div>
+        </div>
+      </LayoutManager>
     );
   } else {
     return <PageNotFound />;
