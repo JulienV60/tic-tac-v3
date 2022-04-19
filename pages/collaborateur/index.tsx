@@ -184,7 +184,7 @@ export default function Home(props: any) {
                     {element?.designation.toUpperCase()}
                   </div>
                   <p> {element?.date}</p>
-                  <p>{element?.diff}</p>
+                  <p>{element?.diff === 0 ? <></> : element?.diff}H</p>
                 </div>
               );
             }

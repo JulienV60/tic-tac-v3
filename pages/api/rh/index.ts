@@ -3064,7 +3064,7 @@ export default async function handler(
         ],
       ],
       profile: profile,
-      img: "",
+      img: "https://www.cabinet-nouvellefrance.fr/wp-content/uploads/2017/02/no-photo.png",
       soldes_cp: 0,
       rayon: "62542bb959cf2086165f496f",
       email: email,
