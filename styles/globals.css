@@ -791,3 +791,18 @@
   left:10px;
 }
 }
+
+/* ============= DEBUT PAGE PLANNING CREATION ============= */
+.modalPlanning{
+  position:absolute;
+  z-index:5;
+  left:40%;
+}
+@media screen and (max-width: 540px) {
+  .modalPlanning{
+  position:absolute;
+  z-index:5;
+  top:210px;
+  left:10px;
+}
+}
