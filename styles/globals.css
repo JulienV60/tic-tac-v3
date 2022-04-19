@@ -684,6 +684,8 @@
   grid-area: 4/ 11 / 4 / 6;
 }
 .week-title-left {
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.5rem;
   text-align: center;
   color: #1d626b;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -691,6 +693,8 @@
 }
 
 .week-title-right {
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.5rem;
   text-align: center;
   color: #1d626b;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);

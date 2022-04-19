@@ -1,10 +1,6 @@
-import { GetServerSideProps } from "next";
 import React from "react";
-import { Layout } from "../../components/LayoutCollab";
-import jwt_decode from "jwt-decode";
-import PageNotFound from "../../components/PageNotFound";
-import { userProfil } from "../../src/userInfos";
-import { v4 as uuid } from "uuid";
+import Link from "next/link";
+import { Button } from "react-bootstrap";
 // import CldCustUploadLgRestApi from "../../components/uploadPicture";
 export default function Rh(props: any) {
   const [selectedImage, setSelectedImage] = React.useState(null);
@@ -12,6 +8,16 @@ export default function Rh(props: any) {
     <div
       style={{ backgroundColor: "#2f9dac", height: "100%", marginTop: "5rem" }}
     >
+      <Link href="/" passHref={true}>
+        <Button
+          type="submit"
+          className="home-btn-one"
+          variant="#2f9dac"
+          color="#2f9dac"
+        >
+          Page Accueil
+        </Button>
+      </Link>
       <h1
         style={{
           paddingTop: "2rem",
