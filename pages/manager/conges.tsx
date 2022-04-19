@@ -181,8 +181,8 @@ function Conges(props: any) {
           if (element !== null) {
             if (element.allCongeTraited.includes(false)) {
               return (
-                <div className="row overflow-auto" key={element.id}>
-                  <div className="col-2">
+                <div className="row overflow-auto " key={element.id}>
+                  <div className="col-2 fondGris">
                     <div
                       style={{
                         height: "20rem",
