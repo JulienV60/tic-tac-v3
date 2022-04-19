@@ -36,7 +36,7 @@ export default async function handler(
       idUser: addNewUser.toString(),
       nom: nom,
       prenom: prenom,
-      droit_cp: 0,
+      droit_cp: 35,
       magasins: new ObjectId("62542ac959cf2086165f496e"),
       conges: [],
       horaires: [
