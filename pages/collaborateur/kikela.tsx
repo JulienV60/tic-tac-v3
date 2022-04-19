@@ -55,8 +55,8 @@ export default function Kikela(props: any) {
   if (props.profileUser === "Collaborateur") {
     return (
       <Layout>
-        <div className="p-5">
-          <div className="p-5">
+        <div>
+          <div>
             <div
               className="container p-5 my-5 border rounded"
               style={{
@@ -64,8 +64,8 @@ export default function Kikela(props: any) {
               }}
             >
               <form className="d-flex justify-content-center ">
-                <div className="row d-flex w-75">
-                  <div className="col w-75 ">
+                <div className="row d-flex w-100">
+                  <div className="col mt-2">
                     <input
                       type="text"
                       className="form-control "
@@ -76,7 +76,7 @@ export default function Kikela(props: any) {
                       }}
                     />
                   </div>
-                  <div className="col w-75">
+                  <div className="col mt-2">
                     <input
                       type="text"
                       className="form-control"
@@ -87,7 +87,7 @@ export default function Kikela(props: any) {
                       }}
                     />
                   </div>
-                  <div className="col w-25">
+                  <div className="col mt-2 d-flex justify-content-center">
                     <button
                       onClick={handleSubmit}
                       type="button"
@@ -107,9 +107,11 @@ export default function Kikela(props: any) {
               }}
             >
               <ul className="list-group list-group-flush">
-                <li className="list-group-item">Nom: {nom}</li>
-                <li className="list-group-item">Prénom: {prenom}</li>
-                <li className="list-group-item">Dispo: {dispo}</li>
+                <li className="list-group-item mt-2 rounded">Nom: {nom}</li>
+                <li className="list-group-item mt-2 rounded">
+                  Prénom: {prenom}
+                </li>
+                <li className="list-group-item mt-2 rounded">Dispo: {dispo}</li>
               </ul>
             </div>
           </div>
