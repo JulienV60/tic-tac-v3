@@ -191,6 +191,7 @@
 }
 .header-resource-avatar {
   border-radius: 50%;
+  object-fit: cover;
 }
 .container-fluid img {
   width: 2rem;
@@ -221,12 +222,33 @@
   cursor: pointer;
 }
 
+.home-btn-one {
+  background-color: #2f9dac;
+  font-size: 18px;
+  text-align: center;
+  color: #f1f1f1;
+  padding: 0.8em;
+  border-radius: 5px;
+  margin-top: 1em;
+  margin-left: 1em;
+  border: 1px solid #f1f1f1;
+  width: 10em;
+  cursor: pointer;
+}
+
 .home-btn .connexionText {
   color: white;
   margin-right: 0.5rem;
 }
 
 .home-btn:hover {
+  transition: all 0.2s ease-in-out;
+  color: #2f9dac;
+  border: 1px solid #2f9dac;
+  background: #f1f1f1;
+}
+
+.home-btn-one:hover {
   transition: all 0.2s ease-in-out;
   color: #2f9dac;
   border: 1px solid #2f9dac;

@@ -5,6 +5,16 @@ import { Card, Button } from "react-bootstrap";
 const Home: NextPage = (props: any) => {
   return (
     <div className="entireHomepage">
+      <div className="">
+        <Button
+              type="submit"
+              className="home-btn-one"
+              variant="#2f9dac"
+              color="#2f9dac"
+            >
+              Acces RH
+            </Button>
+        </div>
       {/* ======= HOMEPAGE NO CONNECTED START ======== */}
 
       <section className="home-no-connected">
