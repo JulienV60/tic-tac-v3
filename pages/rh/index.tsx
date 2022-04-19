@@ -9,9 +9,12 @@ import { v4 as uuid } from "uuid";
 export default function Rh(props: any) {
   const [selectedImage, setSelectedImage] = React.useState(null);
   return (
-    <div>
+    <div
+      style={{ backgroundColor: "#2f9dac", height: "100%", marginTop: "5rem" }}
+    >
       <h1
         style={{
+          paddingTop: "2rem",
           color: "white",
           fontFamily: "Bebas Neue",
           backgroundColor: "#2f9dac",
@@ -24,10 +27,18 @@ export default function Rh(props: any) {
         <form
           action="/api/rh"
           method="POST"
-          style={{ width: "50rem", textAlign: "center" }}
+          style={{ width: "50rem", lineHeight: "5rem", textAlign: "center" }}
         >
           <div className="form-group">
-            <label>Nom</label>
+            <label
+              style={{
+                fontFamily: "Bebas Neue",
+                fontSize: "2rem",
+                textAlign: "center",
+              }}
+            >
+              Nom
+            </label>
             <input
               type="text"
               className="form-control"
@@ -36,7 +47,9 @@ export default function Rh(props: any) {
               name="nom"
             />
           </div>
-          <label>Prénom</label>
+          <label style={{ fontFamily: "Bebas Neue", fontSize: "2rem" }}>
+            Prénom
+          </label>
           <input
             type="text"
             className="form-control"
@@ -44,7 +57,9 @@ export default function Rh(props: any) {
             placeholder="Prenom"
             name="prenom"
           />
-          <label>Email</label>
+          <label style={{ fontFamily: "Bebas Neue", fontSize: "2rem" }}>
+            Email
+          </label>
           <input
             type="text"
             className="form-control"
@@ -52,23 +67,41 @@ export default function Rh(props: any) {
             placeholder="Email"
             name="email"
           />{" "}
-          <label>Numero Magasin</label>
+          <label style={{ fontFamily: "Bebas Neue", fontSize: "2rem" }}>
+            Numero Magasin
+          </label>
           <input
             type="text"
             className="form-control"
             id="formGroupExampleInput2"
-            placeholder="Numeromagasin"
+            placeholder="Numero magasin"
             name="numeromagasin"
           />{" "}
-          <label>Numero Rayon</label>
+          <label
+            style={{
+              fontFamily: "Bebas Neue",
+              fontSize: "2rem",
+              textAlign: "center",
+            }}
+          >
+            Numero Rayon
+          </label>
           <input
             type="text"
             className="form-control"
             id="formGroupExampleInput2"
-            placeholder="Numerorayon"
+            placeholder="Numero rayon"
             name="numerorayon"
           />
-          <div className="form-check">
+          <div
+            className="form-check"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <input
               className="form-check-input"
               type="radio"
@@ -76,23 +109,51 @@ export default function Rh(props: any) {
               id="exampleRadios1"
               value="Collaborateur"
               checked
+              style={{ width: "2rem", height: "2rem" }}
             />
-            <label className="form-check-label">Collaborateur</label>
-          </div>
-          <div className="form-check">
+            <label
+              className="form-check-label"
+              style={{
+                marginLeft: "1rem",
+                fontFamily: "Bebas Neue",
+                fontSize: "2rem",
+              }}
+            >
+              Collaborateur
+            </label>
             <input
+              style={{ marginLeft: "1rem", width: "2rem", height: "2rem" }}
               className="form-check-input"
               type="radio"
               name="exampleRadios"
               id="exampleRadios2"
               value="Manager"
             />
-            <label className="form-check-label">Manager</label>
+            <label
+              className="form-check-label"
+              style={{
+                marginLeft: "1rem",
+                fontFamily: "Bebas Neue",
+                fontSize: "2rem",
+              }}
+            >
+              Manager
+            </label>
           </div>{" "}
+          <button
+            type="submit"
+            className="btn"
+            style={{
+              backgroundColor: "white",
+              color: "#2f9dac",
+              width: "10rem",
+            }}
+          >
+            Envoyer
+          </button>{" "}
           {/* <CldCustUploadLgRestApi /> */}{" "}
         </form>
       </div>
-      <button type="submit">Envoyer</button>{" "}
     </div>
   );
 }

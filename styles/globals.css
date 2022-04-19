@@ -765,44 +765,43 @@
 /* ============= FIN PAGE MANAGER/CONGES ============= */
 .formRh {
   background-color: #2f9dac;
+  height: auto;
   color: white;
-
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 5rem;
 }
 
 /* ============= DEBUT PAGE PLANNING COLLABORATEUR ============= */
-.buttonPDF{
-  background-color:"#2f9dac";
-  position:absolute;
-  z-index:5;
-  top:180px;
-  left:20px;
+.buttonPDF {
+  background-color: "#2f9dac";
+  position: absolute;
+  z-index: 5;
+  top: 180px;
+  left: 20px;
 }
 @media screen and (max-width: 540px) {
-  .buttonPDF{
-  background-color:"#2f9dac";
-  position:absolute;
-  z-index:5;
-  top:210px;
-  left:10px;
-}
+  .buttonPDF {
+    background-color: "#2f9dac";
+    position: absolute;
+    z-index: 5;
+    top: 210px;
+    left: 10px;
+  }
 }
 
 /* ============= DEBUT PAGE PLANNING CREATION ============= */
-.modalPlanning{
-  position:absolute;
-  z-index:5;
-  left:40%;
+.modalPlanning {
+  position: absolute;
+  z-index: 5;
+  left: 40%;
 }
 @media screen and (max-width: 540px) {
-  .modalPlanning{
-  position:absolute;
-  z-index:5;
-  top:210px;
-  left:10px;
-}
+  .modalPlanning {
+    position: absolute;
+    z-index: 5;
+    top: 210px;
+    left: 10px;
+  }
 }

@@ -1,20 +1,22 @@
 import type { NextPage } from "next";
 import LoginIcon from "@mui/icons-material/Login";
 import { Card, Button } from "react-bootstrap";
-
+import Link from "next/link";
 const Home: NextPage = (props: any) => {
   return (
     <div className="entireHomepage">
       <div className="">
-        <Button
-              type="submit"
-              className="home-btn-one"
-              variant="#2f9dac"
-              color="#2f9dac"
-            >
-              Acces RH
-            </Button>
-        </div>
+        <Link href="/rh" passHref={true}>
+          <Button
+            type="submit"
+            className="home-btn-one"
+            variant="#2f9dac"
+            color="#2f9dac"
+          >
+            Acces RH
+          </Button>
+        </Link>
+      </div>
       {/* ======= HOMEPAGE NO CONNECTED START ======== */}
 
       <section className="home-no-connected">
