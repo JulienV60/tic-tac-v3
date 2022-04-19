@@ -215,11 +215,9 @@ function App(props) {
       </div>
     );
   };
-  console.log(myEvents);
   return (
     <LayoutManager>
-
-      <Toast onClose={() => setShow(false)} show={show} delay={1000} autohide>
+      <Toast onClose={() => setShow(false)} show={show} className="modalPlanning" delay={2000} autohide>
       <Toast.Header>
         <strong className="me-auto">Modification</strong>
       </Toast.Header>
