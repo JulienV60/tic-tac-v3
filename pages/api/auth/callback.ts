@@ -7,7 +7,6 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const queryCode = req.query.code;
-  console.log("hello");
   const mongodb = await getDatabase();
   const auth0 = await fetch(`${process.env.AUTH0_TOKEN}`, {
     method: "POST",

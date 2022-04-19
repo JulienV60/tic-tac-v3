@@ -773,3 +773,21 @@
   justify-content: center;
   margin-top: 5rem;
 }
+
+/* ============= DEBUT PAGE PLANNING COLLABORATEUR ============= */
+.buttonPDF{
+  background-color:"#2f9dac";
+  position:absolute;
+  z-index:5;
+  top:180px;
+  left:20px;
+}
+@media screen and (max-width: 540px) {
+  .buttonPDF{
+  background-color:"#2f9dac";
+  position:absolute;
+  z-index:5;
+  top:210px;
+  left:10px;
+}
+}
