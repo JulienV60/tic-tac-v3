@@ -191,19 +191,25 @@
 }
 .header-resource-avatar {
   border-radius: 50%;
+  object-fit: cover;
 }
 .container-fluid img {
   width: 2rem;
   border-radius: 50%;
 }
+
 /* ------ HOME  PAGE NO CONNECTED ------- */
+
 .rigth-side {
   text-align: center;
   margin-left: 5em;
 }
+
 .rigth-side > h2 {
   font-family: "Bebas Neue", cursive;
+  white-space: nowrap;
 }
+
 .home-btn {
   background-color: #2f9dac;
   font-size: 18px;
@@ -211,6 +217,20 @@
   padding: 0.8em;
   border-radius: 5px;
   margin-top: 3em;
+  border: 1px solid #f1f1f1;
+  width: 10em;
+  cursor: pointer;
+}
+
+.home-btn-one {
+  background-color: #2f9dac;
+  font-size: 18px;
+  text-align: center;
+  color: #f1f1f1;
+  padding: 0.8em;
+  border-radius: 5px;
+  margin-top: 1em;
+  margin-left: 1em;
   border: 1px solid #f1f1f1;
   width: 10em;
   cursor: pointer;
@@ -226,6 +246,17 @@
   color: #2f9dac;
   border: 1px solid #2f9dac;
   background: #f1f1f1;
+}
+
+.home-btn-one:hover {
+  transition: all 0.2s ease-in-out;
+  color: #2f9dac;
+  border: 1px solid #2f9dac;
+  background: #f1f1f1;
+}
+
+.home-btn:hover .connexionText {
+  color: #2f9dac;
 }
 
 .home-no-connected {
@@ -258,33 +289,17 @@
   .home-no-connected {
     padding: 4em 2em 1em;
   }
-  .container-home-image img {
-    height: 300px;
-    border-right: none;
-  }
-  .rigth-side {
-    margin-top: 5em;
-  }
-}
-
-@media screen and (max-width: 1133px), (min-width: 1024px) {
-  .container-home-image img {
-    height: 350px;
-  }
 }
 
 @media screen and (max-width: 550px) {
   .container-home-image img {
-    height: 300px;
-  }
-  .home-btn {
-    width: 5em;
+    width: 450px;
   }
 }
 
-@media screen and (max-width: 1420px), (min-width: 1134px) {
+@media screen and (max-width: 1420px), (min-width: 1130px) {
   .container-home-image img {
-    height: 500px;
+    height: 450px;
   }
 }
 
@@ -725,7 +740,7 @@
 /* =============== FIN TEST==============  */
 
 /* ============= PAGE MANAGER/CONGES ============= */
-@media screen and (max-width: 768px), (max-width: 1180px) {
+@media screen and (max-width: 1180px) {
   .row {
     display: flex;
 
@@ -748,3 +763,13 @@
   }
 }
 /* ============= FIN PAGE MANAGER/CONGES ============= */
+.formRh {
+  background-color: #2f9dac;
+  color: white;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+}
