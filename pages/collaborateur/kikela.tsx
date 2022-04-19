@@ -54,30 +54,21 @@ export default function Kikela(props: any) {
 
   if (props.profileUser === "Collaborateur") {
     return (
-      <div>
-        <Layout>
-          {/* <div className="parent">
-          <form>
-              <div className="div1">Entrez votre Nom</div>
-              <div className="div2"></div>
-              <div className="div3">Entrez votre Prénom</div>
-              <div className="div4"></div>
-            </form>
-          </div> */}
-
-          <div>
+      <Layout>
+        <div className="p-5">
+          <div className="p-5">
             <div
-              className="container p-5 my-5 border"
+              className="container p-5 my-5 border rounded"
               style={{
                 backgroundColor: "#2f9dac",
               }}
             >
-              <form className="">
-                <div className="row d-flex justify-content-between">
-                  <div className="col w-75" style={{ marginLeft: "20rem" }}>
+              <form className="d-flex justify-content-center ">
+                <div className="row d-flex w-75">
+                  <div className="col w-75 ">
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control "
                       placeholder="Entrer votre nom"
                       name="nom"
                       onChange={(event) => {
@@ -85,24 +76,24 @@ export default function Kikela(props: any) {
                       }}
                     />
                   </div>
-                  <div className="col">
+                  <div className="col w-75">
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="Entrer votre Prenom"
+                      placeholder="Entrer votre prénom"
                       name="prenom"
                       onChange={(event) => {
                         setPrenom(event.target.value);
                       }}
                     />
                   </div>
-                  <div className="col">
+                  <div className="col w-25">
                     <button
                       onClick={handleSubmit}
                       type="button"
-                      className="btn btn-primary"
+                      className="btn btn-primary "
                     >
-                      Submit
+                      Rechercher
                     </button>
                   </div>
                 </div>
@@ -110,7 +101,7 @@ export default function Kikela(props: any) {
             </div>
 
             <div
-              className="container p-5 my-5 border"
+              className="container p-5 my-5 border rounded"
               style={{
                 backgroundColor: "#2f9dac",
               }}
@@ -122,8 +113,8 @@ export default function Kikela(props: any) {
               </ul>
             </div>
           </div>
-        </Layout>
-      </div>
+        </div>
+      </Layout>
     );
   } else {
     return <PageNotFound />;
