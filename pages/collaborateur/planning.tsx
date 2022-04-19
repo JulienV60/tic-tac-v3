@@ -15,6 +15,7 @@ import jwt_decode from "jwt-decode";
 import { userProfil } from "../../src/userInfos";
 import getWeek from "date-fns/getWeek";
 import { Layout } from "../../components/LayoutCollab";
+import GeneratePDF from "../../components/PdfGenerator";
 
 export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
   const weekNumber = getWeek(new Date()) - 1;
@@ -181,6 +182,7 @@ export default function IndexManager(props: any) {
 
   return (
     <Layout>
+      <GeneratePDF data={myEvents} ressources={myResources}/>
       <Eventcalendar
         className="planning"
         theme="ios"

@@ -8,7 +8,7 @@ export default async function handler(
   if (req.method === "GET") {
     const mongodb = await getDatabase();
     const semaineSelected = parseInt(req.query.semaine.toString()) - 1;
-    console.log("hello", semaineSelected);
+
     // const idUser = req.query.id;
     let planning = null;
 
