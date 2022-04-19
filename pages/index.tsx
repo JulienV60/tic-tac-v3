@@ -7,6 +7,17 @@ const Home: NextPage = (props: any) => {
     <div className="entireHomepage">
       {/* ======= HOMEPAGE NO CONNECTED START ======== */}
 
+      <div className="d-flex justify-content-end">
+        <Button
+              type="submit"
+              className="home-btn"
+              variant="#2f9dac"
+              color="#2f9dac"
+            >
+              Acces RH
+            </Button>
+        </div>
+
       <section className="home-no-connected">
         <div className="info-card">
           <div className="container-home-image">

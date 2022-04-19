@@ -55,7 +55,7 @@ export const Layout: React.FC<any> = ({ children }) => {
                 }}
               />
               Collaborateur:{" "}
-              {user?.img === null ? <></> : <img src={`${user?.img}`}></img>}{" "}
+              {user?.img === null ? <></> : <img className="header-resource-avatar" src={`${user?.img}`}></img>}{" "}
             </div>
 
             <Navbar.Brand

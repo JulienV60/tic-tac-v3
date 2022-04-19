@@ -191,6 +191,7 @@
 }
 .header-resource-avatar {
   border-radius: 50%;
+  object-fit: cover;
 }
 .container-fluid img {
   width: 2rem;
