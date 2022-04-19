@@ -200,7 +200,6 @@
 .rigth-side {
   text-align: center;
   margin-left: 5em;
-  margin-top: 10em;
 }
 .rigth-side > h2 {
   font-family: "Bebas Neue", cursive;
@@ -213,9 +212,15 @@
   border-radius: 5px;
   margin-top: 3em;
   border: 1px solid #f1f1f1;
-  width: 8em;
+  width: 10em;
   cursor: pointer;
 }
+
+.home-btn .connexionText {
+  color: white;
+  margin-right: 0.5rem;
+}
+
 .home-btn:hover {
   transition: all 0.2s ease-in-out;
   color: #2f9dac;
@@ -231,6 +236,20 @@
   width: 100%;
   margin: 0 auto;
   position: relative;
+  align-items: center;
+}
+
+.rigth-side .TacTicHomepage {
+  color: #2f9dac;
+  font-family: "Bebas Neue", cursive;
+}
+
+.entireHomepage {
+  display: flex;
+  height: 100vh;
+  overflow-y: hidden;
+  /* background-image: url("../public/FondAdeo.png"); */
+  background-size: cover;
 }
 
 /* ------ HOMEPAGE NO CONNECTED : Medias queries ------- */
@@ -242,30 +261,36 @@
   .container-home-image img {
     height: 300px;
     border-right: none;
-    border-bottom: 2px solid rgb(204 204 204);
   }
   .rigth-side {
     margin-top: 5em;
   }
 }
 
-@media screen and (max-width: 1002px) {
+@media screen and (max-width: 1133px), (min-width: 1024px) {
   .container-home-image img {
-    height: 300px;
-    border-right: none;
+    height: 350px;
   }
 }
-@media screen and (max-width: 1133px), (max-width: 1024px) {
-  .container-home-image img {
-    height: 400px;
-  }
-}
+
 @media screen and (max-width: 550px) {
   .container-home-image img {
     height: 300px;
   }
   .home-btn {
     width: 5em;
+  }
+}
+
+@media screen and (max-width: 1420px), (min-width: 1134px) {
+  .container-home-image img {
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 1069px) {
+  .rigth-side {
+    margin-left: 0;
   }
 }
 /* ------ END HOMEPAGE NO CONNECTED : Medias queries ------- */
@@ -483,59 +508,66 @@
   grid-template-rows: repeat(10, 1fr);
   grid-column-gap: 5px;
   grid-row-gap: 5px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-
-  margin-top: 5rem;
+  padding: 0 4rem;
+  margin-top: 2em;
 }
 
 .anomalie {
   background-color: #2f9dac;
   text-align: center;
-
   color: white;
-  height: 2.9rem;
+  height: 2rem;
   font-family: "Bebas Neue", cursive;
-  font-size: 2rem;
+  font-size: 25px;
   align-items: center;
   padding-left: 1rem;
   border-radius: 5px;
-  margin-bottom: 0rem;
   grid-area: 1 / 1 / 2 / 6;
 }
 .dataAnomalie {
-  height: 0;
-  margin-right: 1rem;
-  padding-right: 1rem;
-
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding-left: 4rem;
-  height: 1rem;
   grid-area: 2 / 1 / 3 / 6;
+}
+.dataDay {
+  text-align: center;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5%;
+  margin: 1vw;
+  width: 5rem;
+  height: 7rem;
+  font-size: 14px;
+}
+.dataDay > p {
+  text-align: center;
+  margin-top: 1em;
+}
+.dayAnomalie {
+  background-color: #752b26;
+  color: #f1f1f1;
 }
 .message {
   background-color: #2f9dac;
   text-align: center;
-
   color: white;
-  height: 2.9rem;
+  height: 2rem;
   font-family: "Bebas Neue", cursive;
-  font-size: 2rem;
+  font-size: 25px;
   align-items: center;
   padding-left: 1rem;
   border-radius: 5px;
   grid-area: 1 / 6 / 2 / 11;
 }
 .datamessage {
+  grid-area: 1 / 6 / 4 / 11;
   margin-bottom: 1rem;
   font-size: 2rem;
   text-align: center;
   display: flex;
-
+  font-family: "Bebas Neue";
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -544,9 +576,9 @@
   background-color: #2f9dac;
   text-align: center;
   color: white;
-  height: 2.9rem;
+  height: 2rem;
   font-family: "Bebas Neue", cursive;
-  font-size: 2rem;
+  font-size: 25px;
   align-items: center;
   padding-left: 1rem;
   border-radius: 5px;
@@ -556,10 +588,10 @@
   border-radius: 5px;
   width: auto;
   display: flex;
-  flex-direction: row nowrap;
+  flex-direction: wrap;
   direction: inherit;
-  line-height: 4rem;
-
+  justify-content: center;
+  line-height: 2rem;
   grid-area: 4 / 1 / 7 / 11;
 }
 .compteurs {
@@ -567,9 +599,9 @@
   background-color: #2f9dac;
   text-align: center;
   color: white;
-  height: 2.9rem;
+  height: 2rem;
   font-family: "Bebas Neue", cursive;
-  font-size: 2rem;
+  font-size: 25px;
   align-items: center;
   padding-left: 1rem;
   border-radius: 5px;
@@ -580,9 +612,9 @@
   background-color: #2f9dac;
   text-align: center;
   color: white;
-  height: 2.9rem;
+  height: 2rem;
   font-family: "Bebas Neue", cursive;
-  font-size: 2rem;
+  font-size: 25px;
   align-items: center;
   padding-left: 1rem;
   border-radius: 5px;
@@ -590,17 +622,25 @@
 }
 .datacompteurs {
   grid-area: 8 / 1 / 9 / 6;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 1em;
+  margin: 1em;
 }
 .dataecarts {
   grid-area: 8 / 6 / 9 / 11;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 1em;
+  margin: 1em;
 }
 .conges {
   background-color: #2f9dac;
   text-align: center;
   color: white;
-  height: 2.9rem;
+  height: 2rem;
   font-family: "Bebas Neue", cursive;
-  font-size: 2rem;
+  font-size: 25px;
   align-items: center;
   padding-left: 1rem;
   border-radius: 5px;
@@ -616,12 +656,74 @@
   text-align: center;
   flex-direction: row;
   justify-content: flex-start;
-
   grid-area: 10 / 1 / 11 / 11;
 }
 .mbsc-schedule-event-range {
   font-size: 5em;
 }
+/* ===============TEST==============  */
+.horaires-left {
+  grid-area: 5 / 1 / 4 / 6;
+}
+.horaires-right {
+  grid-area: 4/ 11 / 4 / 6;
+}
+.week-title-left {
+  text-align: center;
+  color: #1d626b;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin: 1rem auto;
+}
+
+.week-title-right {
+  text-align: center;
+  color: #1d626b;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin: 1rem auto;
+}
+.row-horaires {
+  text-align: center;
+  margin: 2vw auto;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.card-horaires {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  border-radius: 5%;
+  margin: 0.5%;
+  width: 6rem;
+  height: 9rem;
+  font-size: 12px;
+}
+.card-horaires > p {
+  padding: 7%;
+  margin: 5%;
+}
+.day {
+  background-color: #2f9dac;
+  color: #f1f1f1;
+  border-radius: 5%;
+  font-size: 12px;
+}
+.dash {
+  background-color: #658a8f;
+  border-radius: 5%;
+  color: #f1f1f1;
+}
+
+.dataHorairesSemainesSuivantes {
+  grid-area: 5/ 11 / 4/ 6;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 2vw auto;
+}
+/* =============== FIN TEST==============  */
+
 /* ============= PAGE MANAGER/CONGES ============= */
 @media screen and (max-width: 768px), (max-width: 1180px) {
   .row {

@@ -1,7 +1,6 @@
 import { GetServerSideProps, NextPage } from "next";
 import { Layout } from "../../components/LayoutCollab";
 import jwt_decode from "jwt-decode";
-
 import React from "react";
 import { userId, userProfil } from "../../src/userInfos";
 import { getDatabase } from "../../src/database";
@@ -163,9 +162,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 export default function Home(props: any) {
   const message = JSON.parse(props.message);
   const allDateActual = JSON.parse(props.allDate);
-
   const allDateNext = JSON.parse(props.allDateNext);
-
   const congesPending = JSON.parse(props.congesPending);
   const contingentActuel = props.contingentActuel;
   const contingentCumule = props.contigentCumule;
@@ -181,12 +178,13 @@ export default function Home(props: any) {
           {anomalie.map((element: any, index: any) => {
             if (index !== 0) {
               return (
-                <div key={index}>
-                  {element.designation}
-                  <br></br>
-                  {element.date}
-                  <br></br>
-                  {element.diff}
+                <div className="dataDay" key={index}>
+                  <div className="dayAnomalie">
+                    {" "}
+                    {element?.designation.toUpperCase()}
+                  </div>
+                  <p> {element?.date}</p>
+                  <p>{element?.diff}</p>
                 </div>
               );
             }
@@ -194,118 +192,78 @@ export default function Home(props: any) {
         </div>
         <div className="message">Message</div>
 
-        <div
-          className="datamessage"
-          style={{
-            fontFamily: "Bebas Neue",
-          }}
-        >
-          {message}
-        </div>
+        <div className="datamessage">{message}</div>
         <div className="horaires"> Horaires</div>
-        <div
-          className="dataHoraires"
-          style={{
-            backgroundColor: "#2f9dac",
-            color: "white",
-          }}
-        >
-          <span
-            style={{
-              borderRadius: "5px",
-              backgroundColor: "#2f9dac",
-              color: "white",
-              fontFamily: "Bebas Neue",
-              fontSize: "2rem",
-              paddingTop: "3.5rem",
-              textAlign: "center",
-              borderRight: "4px Solid white",
-            }}
-          >
-            Semaine Actuel:
-          </span>
-          <br></br>
-          {allDateActual.map((element: any) => {
-            if (element !== null) {
-              return (
-                <>
-                  <p
-                    style={{
-                      marginLeft: "1.15rem",
-                      color: "white",
+        <div className="horaires-left">
+          <div className="week-title-left"> SEMAINE ACTUELLE </div>
+          <section className="row-horaires">
+            {allDateActual.map((element: any) => {
+              if (element !== null) {
+                return (
+                  <>
+                    {/* ======= SEMAINE ACTUELLE =========  */}
+                    <div className="card-horaires">
+                      <div className="day">
+                        {element.nameday.toUpperCase()}
+                        <p>{element.date}</p>
+                      </div>
 
-                      width: "auto",
-                      height: "5rem",
-                    }}
-                  ></p>
-                  {element.nameday.toUpperCase()}
-                  <br></br>
-                  {element.date}
-                  <br></br>
-                  {element.horairesStart}
-                  <br></br>
-                  {element.horairesEnd}
-                  <br></br>
-                </>
-              );
-            }
-          })}{" "}
-          <div style={{ borderRight: "4px Solid white" }}></div>
-          <br></br>
-          <span
-            style={{
-              backgroundColor: "#2f9dac",
-              color: "white",
-              fontFamily: "Bebas Neue",
-              fontSize: "2rem",
-              paddingTop: "3.5rem",
+                      <p className="dash">Début: {element.horairesStart}</p>
 
-              textAlign: "center",
-              borderRight: "4px Solid white",
-            }}
-          >
-            Semaine Suivante:
-          </span>
-          {allDateNext.map((element: any) => {
-            if (element !== null) {
-              return (
-                <>
-                  <p
-                    style={{
-                      marginLeft: "1rem",
-                      color: "white",
-                      width: "auto",
-                      height: "5rem",
-                    }}
-                  ></p>
-                  {element.nameday.toUpperCase()}
-                  <br></br>
-                  {element.date}
-                  <br></br>
-                  {element.horairesStart === undefined ? (
-                    <>Planning non programmé</>
-                  ) : (
-                    element.horairesStart
-                  )}
-                  <br></br>
-                  {element.horairesEnd}
-                  <br></br>
-                </>
-              );
-            }
-          })}
+                      <p className="dash">Fin: {element.horairesEnd}</p>
+                    </div>
+                    {/* ======= FIN SEMAINE ACTUELLE ======== */}
+                  </>
+                );
+              }
+            })}
+          </section>
         </div>
+        <div className="horaires-right">
+          <div className="week-title-right"> SEMAINE SUIVANTE </div>
+          <section className="dataHorairesSemainesSuivantes">
+            {allDateNext.map((element: any) => {
+              if (element !== null) {
+                return (
+                  <>
+                    {/* ============ SEMAINE SUIVANTE  ============== */}
+                    <div className="card-horaires">
+                      <div className="day">
+                        {element.nameday.toUpperCase()}
+                        <p>{element.date}</p>
+                      </div>
+
+                      <p className="dash">
+                        {" "}
+                        {element.horairesStart === undefined ? (
+                          <>Planning non programmé</>
+                        ) : (
+                          element.horairesStart
+                        )}
+                      </p>
+
+                      <p className="dash">{element.horairesEnd}</p>
+                    </div>
+                    {/* ============ FIN SEMAINE SUIVANTE  ============== */}
+                  </>
+                );
+              }
+            })}
+          </section>
+        </div>
+
         <div className="compteurs">Compteurs </div>
-        <div className="ecarts">Ecarts </div>
+        <div className="ecarts">Écarts </div>
         <div className="datacompteurs">
-          {" "}
-          Contingent contractuel cumulé au {temps} : {contingentActuel} Heures
-          <br></br>
-          <br></br>
-          Contingent contractuel ajusté au {temps} :{contingentCumule} Heures
+          <p>
+            Contingent contractuel cumulé au {temps} : {contingentActuel} h
+          </p>
+          <p>
+            Contingent contractuel ajusté au {temps} : {contingentCumule} h
+          </p>
         </div>
         <div className="dataecarts">
-          Ecart entre contingent cumulé et ajuste : {differenceCumuleActuel}{" "}
+          Écart entre contingent cumulé et ajuste : {differenceCumuleActuel}{" "}
           Heures
         </div>
         <div className="conges">Demandes de congés </div>
