@@ -301,10 +301,9 @@ export default function Pointages(props: any) {
                       aria-label="Default select example"
                     >
                       {" "}
-                      <option aria-label="Default select example" selected>
-                        Motifs
+                      <option style={{ display: "anchored" }} value="medicale">
+                        Médicale
                       </option>
-                      <option value="medicale">Médicale</option>
                       <option value="familiale">Familiale</option>
                       <option value="administratif">Administratif</option>{" "}
                       <option value="formation">Formation</option>

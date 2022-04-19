@@ -811,7 +811,7 @@
 }
 @media screen and (max-width: 1214px) {
   .MotifPointages {
-    position: inherit;
+    display: "anchored";
   }
   .form-example-pointages .container {
     line-height: 4rem;
