@@ -34,8 +34,8 @@ export default function GeneratePDF(props: any) {
   }
 
   return (
-    <div>
-      <Button variant="success" style={{backgroundColor:"#2f9dac"}} onClick={generate} ><PictureAsPdfIcon/></Button>
-    </div>
+
+      <Button variant="success" className="buttonPDF" style={{backgroundColor:"#2f9dac"}} onClick={generate} ><PictureAsPdfIcon/></Button>
+
   )
 }
