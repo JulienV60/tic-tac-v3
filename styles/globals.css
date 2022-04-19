@@ -718,7 +718,7 @@
 /* =============== FIN TEST==============  */
 
 /* ============= PAGE MANAGER/CONGES ============= */
-@media screen and (max-width: 768px), (max-width: 1180px) {
+@media screen and (max-width: 1180px) {
   .row {
     display: flex;
 
@@ -741,3 +741,13 @@
   }
 }
 /* ============= FIN PAGE MANAGER/CONGES ============= */
+.formRh {
+  background-color: #2f9dac;
+  color: white;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+}
