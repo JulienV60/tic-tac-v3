@@ -1,11 +1,4 @@
-import {
-  Datepicker,
-  Eventcalendar,
-  getJson,
-  toast,
-  localeFr,
-  SegmentedItem,
-} from "@mobiscroll/react";
+import { Datepicker } from "@mobiscroll/react";
 import { GetServerSideProps, NextPage } from "next";
 import { Card, Button } from "react-bootstrap";
 import { Layout } from "../../components/LayoutCollab";
@@ -51,13 +44,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       const congesNotApprouved = infoArrayConges.filter(
         (element: any, index: any) => element.traited === false
       );
-      const nbrDayAwait = congesNotApprouved.map(
-        (element: any, index: any) => {
-          if (element.traited === false) {
-            return element.nbrdays;
-          }
+      const nbrDayAwait = congesNotApprouved.map((element: any, index: any) => {
+        if (element.traited === false) {
+          return element.nbrdays;
         }
-      );
+      });
       const congesApprouved = infoArrayConges.filter(
         (element: any, index: any) => element.approuved === true
       );
@@ -86,7 +77,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           demandeApprouved: congesApprouved.length,
           nbrTake: sum,
           data: congesInfo,
-          nbrNbrAwait:sumNbrAwait,
+          nbrNbrAwait: sumNbrAwait,
           dataListConges: JSON.stringify(infoArrayConges),
         },
       };
@@ -107,7 +98,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 export default function Conges(props: any) {
   const [date, setMyDate] = React.useState();
-  const [soldePrevision, setSoldePrevision] = React.useState(parseInt(props.data.soldesCP) - parseInt(props.nbrNbrAwait));
+  const [soldePrevision, setSoldePrevision] = React.useState(
+    parseInt(props.data.soldesCP) - parseInt(props.nbrNbrAwait)
+  );
   const [calendar, setCalendar] = React.useState();
   const [showbutton, setShowButton] = React.useState(false);
   let dataConges = [];
@@ -123,7 +116,7 @@ export default function Conges(props: any) {
     if (diffInDays <= soldePrevision) {
       setShowButton(true);
     } else {
-      setShowButton(false)
+      setShowButton(false);
     }
     setMyDate(ev.value);
   };
@@ -139,23 +132,19 @@ export default function Conges(props: any) {
     <>
       <Layout>
         <div className="container">
+          {/* ============== SOLDES DES CONGES PAYES ============ */}
+
           <section className="leave-section">
-            <div className="leave-title" style={{ borderRadius: "5px" }}>
+            <div className="leave-title">
               <h3 className="leave-h3 ">Soldes des congés payés</h3>
             </div>
-            <Card.Img
-              style={{ width: "5rem", height: "5rem" }}
-              src="/calendar.png"
-            />
-            <div className="container-picker">
-              {" "}
-              <form
-                method="POST"
-                action={`${process.env.AUTH0_LOCAL}/api/collaborateur`}
-              >
-                <span className="leave-picker ">
-                  <div>
-                    {" "}
+            <div>
+              <div>
+                <form
+                  method="POST"
+                  action={`${process.env.AUTH0_LOCAL}/api/collaborateur`}
+                >
+                  <div className="container-picker">
                     <Datepicker
                       themeVariant="light"
                       controls={["calendar"]}
@@ -165,220 +154,161 @@ export default function Conges(props: any) {
                       value={date}
                       onChange={pickerChange}
                       endIcon="calendar"
-                    />{" "}
+                    />
                   </div>
-                </span>
-                {showbutton === true ? (
-                  <button
-                    type="button"
-                    className="btn"
-                    style={{ backgroundColor: "#2f9dac", color: "white" }}
-                    onClick={sendDate}
-                    id="date"
-                  >
-                    Valider
-                  </button>
-                ) : (
-                  <></>
-                )}
-              </form>
-            </div>
 
-            <div className="leave-history">
-              <div className="libelle">
-                Droits <p>{props.data.droitCP}</p>
+                  {showbutton === true ? (
+                    <button
+                      type="button"
+                      className="btn"
+                      style={{ backgroundColor: "#2f9dac", color: "white" }}
+                      onClick={sendDate}
+                      id="date"
+                    >
+                      Valider
+                    </button>
+                  ) : (
+                    <></>
+                  )}
+                </form>
               </div>
-              <div className="start">
-                {" "}
-                Pris <p>{props.nbrTake}</p>
+            </div>
+            <div className="container-leave">
+              <div className="leave-history">
+                <div>
+                  <div className="leave-title">Droits</div>
+                  <p>{props.data.droitCP}</p>
+                </div>
+                <div>
+                  <div className="leave-title"> Pris </div>
+                  <p>{props.nbrTake}</p>
+                </div>
+                <div>
+                  <div className="leave-title"> Soldes </div>
+                  <p>{props.data.soldesCP}</p>
+                </div>
+                <div>
+                  <div className="leave-title">Demandes en cours </div>
+                  <p>{props.demandeawait}</p>
+                </div>
+                <div>
+                  <div className="leave-title">Demandes acceptées </div>
+                  <p>{props.demandeApprouved}</p>
+                </div>
+                <div>
+                  <div className="leave-title">Demandes refusées</div>
+                  <p>{props.demandeRefused}</p>
+                </div>
+                <div>
+                  <div className="leave-title">Soldes prévitionnels</div>
+                  <p>{soldePrevision}</p>
+                </div>
               </div>
-              <div className="end">
-                Soldes <p>{props.data.soldesCP}</p>
-              </div>
-              <div className="quantity">
-                Demandes en cours <p>{props.demandeawait}</p>
-              </div>{" "}
-              <div className="rest">
-                Demandes acceptées <p>{props.demandeApprouved}</p>
-              </div>{" "}
-              <div className="forecast-balances">
-                Demandes refusées<p>{props.demandeRefused}</p>
-              </div>
-              <div className="forecast-balances">Soldes prévitionnels<p>{soldePrevision}</p></div>
             </div>
           </section>
+
+          {/* ============== HISTORIQUES DES DEMANDES EN COURS ============ */}
 
           <section className="leave-section">
             <div className="leave-title" style={{ borderRadius: "5px" }}>
               <h3 className="leave-h3">Historiques des demandes en cours</h3>
             </div>
 
-            <div className="leave-history">
-              <div className="start" style={{ borderRadius: "5px" }}>
-                {" "}
-                Date de Début
-              </div>
-              <div className="end" style={{ borderRadius: "5px" }}>
-                Date de fin
-              </div>
-              <div className="quantity" style={{ borderRadius: "5px" }}>
-                Quantité
-              </div>
-              <div className="rest" style={{ borderRadius: "5px" }}>
-                Statut
-              </div>
-              <div
-                className="forecast-balances"
-                style={{ borderRadius: "5px" }}
-              >
-                Soldes prévisionnels
-              </div>
-            </div>
             {dataConges.map((element: any, index: number) => {
-
               if (element.traited === false) {
                 return (
-                  <div
-                    key={index}
-                    className="leave-history"
-                    style={{ borderRadius: "5px" }}
-                  >
-                    <div className="start" style={{ borderRadius: "5px" }}>
-                      {moment(element.start).format("L")}
-                    </div>
-                    <div className="end" style={{ borderRadius: "5px" }}>
-                      {" "}
-                      {moment(element.end).format("L")}
-                    </div>
-                    <div className="quantity" style={{ borderRadius: "5px" }}>
-                      {element.nbrdays}
-                    </div>
-                    <div className="rest" style={{ borderRadius: "5px" }}>
-                      En cours
-                    </div>
+                  <div className="container-leave">
                     <div
-                      className="forecast-balances"
+                      key={index}
+                      className="leave-history"
                       style={{ borderRadius: "5px" }}
                     >
-                      Soldes prévisionnels
+                      <div className="start">
+                        <div className="leave-title">Date de Début</div>
+                        <p>{moment(element.start).format("L")}</p>
+                      </div>
+                      <div className="end">
+                        <div className="leave-title">Date de fin</div>
+                        <p>{moment(element.end).format("L")}</p>
+                      </div>
+                      <div className="quantity">
+                        <div className="leave-title">Quantité</div>
+                        <p>{element.nbrdays}</p>
+                      </div>
+                      <div className="rest">
+                        <div className="leave-title">Statut</div>
+                        En cours
+                      </div>
                     </div>
                   </div>
                 );
               }
             })}
           </section>
+
+          {/* ============== HISTORIQUES DES DEMANDES REFUSEES ============ */}
 
           <section className="leave-section">
             <div className="leave-title" style={{ borderRadius: "5px" }}>
               <h3 className="leave-h3">Historiques des demandes refusées</h3>
             </div>
 
-            <div className="leave-history">
-              <div className="start" style={{ borderRadius: "5px" }}>
-                {" "}
-                Date de Début
-              </div>
-              <div className="end" style={{ borderRadius: "5px" }}>
-                Date de fin
-              </div>
-              <div className="quantity" style={{ borderRadius: "5px" }}>
-                Quantité
-              </div>
-              <div className="rest" style={{ borderRadius: "5px" }}>
-                Statut
-              </div>
-              <div
-                className="forecast-balances"
-                style={{ borderRadius: "5px" }}
-              >
-                Soldes prévisionnels
-              </div>
-            </div>
             {dataConges.map((element: any, index: number) => {
-
               if (element.approuved === false && element.traited === true) {
                 return (
-                  <div
-                    key={index}
-                    className="leave-history"
-                    style={{ borderRadius: "5px" }}
-                  >
-                    <div className="start" style={{ borderRadius: "5px" }}>
-                      {moment(element.start).format("L")}
-                    </div>
-                    <div className="end" style={{ borderRadius: "5px" }}>
-                      {" "}
-                      {moment(element.end).format("L")}
-                    </div>
-                    <div className="quantity" style={{ borderRadius: "5px" }}>
-                      {element.nbrdays}
-                    </div>
-                    <div className="rest" style={{ borderRadius: "5px",backgroundColor:"red" }}>
-                      Refusée
-                    </div>
-                    <div
-                      className="forecast-balances"
-                      style={{ borderRadius: "5px" }}
-                    >
-                      Soldes prévisionnels
+                  <div className="container-leave">
+                    <div key={index} className="leave-history">
+                      <div className="start">
+                        <div className="leave-title"> Date de Début</div>
+                        <p>{moment(element.start).format("L")}</p>
+                      </div>
+                      <div className="end">
+                        <div className="leave-title">Date de fin</div>
+                        <p>{moment(element.end).format("L")}</p>
+                      </div>
+                      <div className="quantity">
+                        <div className="leave-title">Quantité</div>
+                        {element.nbrdays}
+                      </div>
+                      <div>
+                        <div className="leave-title">Statut</div>
+                        <p className="red">Refusée</p>
+                      </div>
                     </div>
                   </div>
                 );
               }
             })}
           </section>
+
+          {/* ============== HISTORIQUES DES DEMANDES ACCEPTEES ============ */}
+
           <section className="leave-section">
-            <div className="leave-title" style={{ borderRadius: "5px" }}>
+            <div className="leave-title">
               <h3 className="leave-h3">Historiques des demandes acceptées</h3>
             </div>
 
-            <div className="leave-history">
-              <div className="start" style={{ borderRadius: "5px" }}>
-                {" "}
-                Date de Début
-              </div>
-              <div className="end" style={{ borderRadius: "5px" }}>
-                Date de fin
-              </div>
-              <div className="quantity" style={{ borderRadius: "5px" }}>
-                Quantité
-              </div>
-              <div className="rest" style={{ borderRadius: "5px" }}>
-                Statut
-              </div>
-              <div
-                className="forecast-balances"
-                style={{ borderRadius: "5px" }}
-              >
-                Soldes prévisionnels
-              </div>
-            </div>
             {dataConges.map((element: any, index: number) => {
               if (element.approuved === true) {
                 return (
-                  <div
-                    key={index}
-                    className="leave-history"
-                    style={{ borderRadius: "5px" }}
-                  >
-                    <div className="start" style={{ borderRadius: "5px" }}>
-                      {moment(element.start).format("L")}
-                    </div>
-                    <div className="end" style={{ borderRadius: "5px" }}>
-                      {" "}
-                      {moment(element.end).format("L")}
-                    </div>
-                    <div className="quantity" style={{ borderRadius: "5px" }}>
-                      {element.nbrdays}
-                    </div>
-                    <div className="rest" style={{ borderRadius: "5px",backgroundColor:"green" }}>
-                      Acceptée
-                    </div>
-                    <div
-                      className="forecast-balances"
-                      style={{ borderRadius: "5px" }}
-                    >
-                      Soldes prévisionnels
+                  <div className="container-leave">
+                    <div key={index} className="leave-history">
+                      <div>
+                        <div className="leave-title">Date de Début</div>
+                        <p>{moment(element.start).format("L")}</p>
+                      </div>
+                      <div>
+                        <div className="leave-title">Date de fin</div>
+                        <p> {moment(element.end).format("L")}</p>
+                      </div>
+                      <div>
+                        <div className="leave-title">Quantité</div>
+                        <p> {element.nbrdays}</p>
+                      </div>
+                      <div>
+                        <div className="leave-title">Statut</div>
+                        <p className="green"> Acceptée</p>
+                      </div>
                     </div>
                   </div>
                 );
