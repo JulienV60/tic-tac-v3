@@ -147,7 +147,6 @@
 
 .MotifPointages {
   grid-area: 4 / 4 / 5 / 5;
-  margin-left: 32px;
 }
 
 .boutonValidation {
@@ -810,4 +809,20 @@
     left: 10px;
   }
 }
-
+@media screen and (max-width: 1214px) {
+  .MotifPointages {
+    display: "anchored";
+  }
+  .form-example-pointages .container {
+    line-height: 4rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .form-example-pointages .btn {
+    margin-right: 9.5rem;
+    margin-top: 1rem;
+  }
+}

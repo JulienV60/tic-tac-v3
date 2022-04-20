@@ -34,7 +34,7 @@ const Layout: React.FC<any> = ({ children }) => {
       <Navbar bg="#2f9dac" expand={false}>
         <Container fluid>
           <div
-            className="d-flex justify-content-between "
+            className="d-flex justify-content-between flex-wrap"
             style={{ width: "100%" }}
           >
             <div

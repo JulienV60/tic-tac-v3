@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import LoginIcon from "@mui/icons-material/Login";
 import { Card, Button } from "react-bootstrap";
 import Link from "next/link";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 const Home: NextPage = (props: any) => {
   return (
     <div className="entireHomepage">
@@ -13,7 +14,7 @@ const Home: NextPage = (props: any) => {
             variant="#2f9dac"
             color="#2f9dac"
           >
-            Acces RH
+            Accès RH <ManageAccountsIcon />
           </Button>
         </Link>
       </div>
