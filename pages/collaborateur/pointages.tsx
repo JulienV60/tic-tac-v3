@@ -324,7 +324,6 @@ export default function Pointages(props: any) {
                   onClick={sendPointage}
                   type="button"
                   className="boutonValidation btn btn-light"
-                  style={{ color: "#2f9dac" }}
                 >
                   Valider
                 </button>
