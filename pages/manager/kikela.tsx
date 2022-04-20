@@ -88,7 +88,7 @@ export default function Kikela(props: any) {
                     />
                   </div>
                   <div className="col mt-2 d-flex justify-content-center">
-                    <button
+                  <button
                       onClick={handleSubmit}
                       type="button"
                       className="home-btn-two"
