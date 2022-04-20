@@ -39,6 +39,7 @@ export default async function handler(
         },
       }
     );
+  console.log(collaborateur);
 
   res.redirect(`${req.headers.referer}`);
 }
