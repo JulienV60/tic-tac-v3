@@ -8,7 +8,9 @@ import { Toast, Header } from "react-bootstrap";
 import moment from "moment";
 import jwt_decode from "jwt-decode";
 import { userProfil } from "../../src/userInfos";
+import getWeek from "date-fns/getWeek";
 export const getServerSideProps = async (context) => {
+  const weekNumber = getWeek(new Date()) - 1;
   const accessTokken = context.req.cookies.IdToken;
   let profile;
   let decoded;
@@ -32,11 +34,7 @@ export const getServerSideProps = async (context) => {
     });
 
     const data = await fetch(
-      `${
-        process.env.AUTH0_LOCAL
-      }/api/manager/planning/db/loadPlanningDb?semaine=${parseInt(
-        moment().locale("fr").format("w")
-      )}`
+      `${process.env.AUTH0_LOCAL}/api/manager/planning/db/loadPlanningDb?semaine=${weekNumber}`
     ).then((result) => result.json());
 
     return {
@@ -53,13 +51,12 @@ export const getServerSideProps = async (context) => {
 };
 
 function App(props) {
+  const weekNumber = getWeek(new Date()) - 1;
   const [myEvents, setEvents] = React.useState();
   const [dataPlanning, setDataPlanning] = React.useState(
     JSON.parse(props.dataPlanningInit)
   );
-  const [semaineShow, setsemaineShow] = React.useState(
-    parseInt(moment().locale("fr").format("w")) - 1
-  );
+  const [semaineShow, setsemaineShow] = React.useState(weekNumber);
 
   const [show, setShow] = useState(false);
   const [test, setTest] = useState(<></>);
@@ -91,7 +88,7 @@ function App(props) {
 
   //à la creation d'un evenement
   const onEventCreated = React.useCallback((args) => {
-    fetch("api/manager/planning/db/addOneEventIntoDb", {
+    fetch("/api/manager/planning/db/addOneEventIntoDb", {
       method: "POST",
       body: JSON.stringify({
         collaborateur: args.event.resource,
@@ -104,7 +101,7 @@ function App(props) {
 
   //à la modification d'un evenement
   const eventUpdate = React.useCallback((args) => {
-    fetch("api/manager/planning/db/updateOneEventIntoDb", {
+    fetch("/api/manager/planning/db/updateOneEventIntoDb", {
       method: "POST",
       body: JSON.stringify({
         collaborateur: args.event.resource,
@@ -117,7 +114,7 @@ function App(props) {
 
   //à la suppression d'un evenement
   const eventClose = React.useCallback((args) => {
-    fetch("api/manager/planning/db/deleteOneEventIntoDb", {
+    fetch("/api/manager/planning/db/deleteOneEventIntoDb", {
       method: "POST",
       body: JSON.stringify({
         collaborateur: args.event.resource,
@@ -131,7 +128,7 @@ function App(props) {
   //function recuperation de la data mongo par semaine
   async function getDataPlanningDb(semaineShow) {
     const data = await fetch(
-      `api/manager/planning/db/loadPlanningDb?semaine=${semaineShow}`
+      `/api/manager/planning/db/loadPlanningDb?semaine=${semaineShow}`
     ).then((result) => result.json());
 
     setDataPlanning(data);
@@ -180,9 +177,7 @@ function App(props) {
       milestones.find((obj) => {
         return +new Date(obj.date) === +date;
       }) || {};
-    const numeroSemaine = parseInt(
-      moment(args.date).locale("fr").format("w") - 1
-    );
+    const numeroSemaine = weekNumber;
     setsemaineShow(numeroSemaine);
 
     return (
