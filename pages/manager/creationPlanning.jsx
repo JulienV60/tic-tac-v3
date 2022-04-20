@@ -4,11 +4,13 @@ import { Eventcalendar, formatDate, localeFr } from "@mobiscroll/react";
 import { getDatabase } from "../../src/database";
 import LayoutManager from "../../components/LayoutManager";
 const milestones = [];
-import {Toast,Header} from "react-bootstrap";
+import { Toast, Header } from "react-bootstrap";
 import moment from "moment";
 import jwt_decode from "jwt-decode";
 import { userProfil } from "../../src/userInfos";
+import getWeek from "date-fns/getWeek";
 export const getServerSideProps = async (context) => {
+  const weekNumber = getWeek(new Date()) - 1;
   const accessTokken = context.req.cookies.IdToken;
   let profile;
   let decoded;
@@ -36,8 +38,9 @@ export const getServerSideProps = async (context) => {
       }
     });
 
-     const data = await fetch(`${process.env.AUTH0_LOCAL}/api/manager/planning/db/loadPlanningDb?semaine=${parseInt(moment().locale("fr").format("w"))}`)
-       .then((result) => result.json())
+    const data = await fetch(
+      `${process.env.AUTH0_LOCAL}/api/manager/planning/db/loadPlanningDb?semaine=${weekNumber}`
+    ).then((result) => result.json());
 
     return {
       props: {
@@ -53,13 +56,12 @@ export const getServerSideProps = async (context) => {
 };
 
 function App(props) {
+  const weekNumber = getWeek(new Date()) - 1;
   const [myEvents, setEvents] = React.useState();
   const [dataPlanning, setDataPlanning] = React.useState(
     JSON.parse(props.dataPlanningInit)
   );
-  const [semaineShow, setsemaineShow] = React.useState(
-    parseInt(moment().locale("fr").format("w")) - 1
-  );
+  const [semaineShow, setsemaineShow] = React.useState(weekNumber);
 
   const [show, setShow] = useState(false);
   const [test, setTest] = useState(<></>);
@@ -104,7 +106,6 @@ function App(props) {
 
   //à la modification d'un evenement
   const eventUpdate = React.useCallback((args) => {
-
     fetch("/api/manager/planning/db/updateOneEventIntoDb", {
       method: "POST",
       body: JSON.stringify({
@@ -127,13 +128,13 @@ function App(props) {
       }),
     });
     setShow(true);
-
   }, []);
 
   //function recuperation de la data mongo par semaine
   async function getDataPlanningDb(semaineShow) {
-     const data = await fetch(`/api/manager/planning/db/loadPlanningDb?semaine=${semaineShow}`)
-     .then((result) => result.json())
+    const data = await fetch(
+      `/api/manager/planning/db/loadPlanningDb?semaine=${semaineShow}`
+    ).then((result) => result.json());
 
     setDataPlanning(data);
   }
@@ -146,34 +147,31 @@ function App(props) {
   useEffect(() => {
     const dataEvent = [];
     const eventsPlanning = dataPlanning.planningData.map((element, index) => {
-
       const test = element.horaires.map((ele, index) => {
         const splitHoraires = ele.horaires.split("/");
 
-          if (index !== 0 && splitHoraires.length !== 1) {
+        if (index !== 0 && splitHoraires.length !== 1) {
           dataEvent.push({
-          id:`${index}:${element.id}`,
-          color: "#2f9dac",
-          start: formatDate(
-            "YYYY-MM-DDTHH:mm:ss.000Z",
-            new Date(splitHoraires[0])
-          ),
-          end: formatDate(
-            "YYYY-MM-DDTHH:mm:ss.000Z",
-            new Date(splitHoraires[1])
-          ),
-          busy: true,
-          description: "Weekly meeting with team",
-          location: "Office",
-          resource: `${element.id}`,
-        })
-          }
-        });
+            id: `${index}:${element.id}`,
+            color: "#2f9dac",
+            start: formatDate(
+              "YYYY-MM-DDTHH:mm:ss.000Z",
+              new Date(splitHoraires[0])
+            ),
+            end: formatDate(
+              "YYYY-MM-DDTHH:mm:ss.000Z",
+              new Date(splitHoraires[1])
+            ),
+            busy: true,
+            description: "Weekly meeting with team",
+            location: "Office",
+            resource: `${element.id}`,
+          });
+        }
+      });
+    });
 
-       })
-
-      setEvents(dataEvent);
-
+    setEvents(dataEvent);
   }, [dataPlanning]);
 
   const renderDay = (args) => {
@@ -184,9 +182,7 @@ function App(props) {
       milestones.find((obj) => {
         return +new Date(obj.date) === +date;
       }) || {};
-    const numeroSemaine = parseInt(
-      moment(args.date).locale("fr").format("w") - 1
-    );
+    const numeroSemaine = weekNumber;
     setsemaineShow(numeroSemaine);
 
     return (
@@ -222,11 +218,20 @@ function App(props) {
   };
   return (
     <LayoutManager>
-      <Toast onClose={() => setShow(false)} show={show} className="modalPlanning" delay={2000} autohide>
-      <Toast.Header>
-        <strong className="me-auto">Modification</strong>
-      </Toast.Header>
-      <Toast.Body>Modification validée !</Toast.Body>
+      <Toast
+        onClose={() => setShow(false)}
+        show={show}
+        className="modalPlanning"
+        delay={2000}
+        autohide
+        style={{ backgroundColor: "#2f9dac" }}
+      >
+        <Toast.Header>
+          <strong className="me-auto">Modification</strong>
+        </Toast.Header>
+        <Toast.Body style={{ color: "white" }}>
+          Modification validée !
+        </Toast.Body>
       </Toast>
       <Eventcalendar
         className="planning"
@@ -247,7 +252,6 @@ function App(props) {
         renderDay={renderDay}
         renderResource={renderCustomResource}
       />
-
     </LayoutManager>
   );
 }

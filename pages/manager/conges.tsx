@@ -9,6 +9,7 @@ import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
+import Link from "next/link";
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const mongodb = await getDatabase();
 
@@ -279,7 +280,7 @@ function Conges(props: any) {
                                   }&i=${index}&day=${e.split("/")[4]}`}
                                   method="POST"
                                 >
-                                  <button
+                                  <Button
                                     className="btn"
                                     style={{
                                       backgroundColor: "red",
@@ -290,40 +291,17 @@ function Conges(props: any) {
                                     }}
                                   >
                                     <CloseIcon />
-                                  </button>
+                                  </Button>
                                 </form>
                               ) : (
                                 <div className="row">
                                   <div className="col-2">
-                                    <button
-                                      className="btn"
-                                      style={{
-                                        marginTop: "1rem",
-                                        backgroundColor: "green",
-                                        width: "3rem",
-                                        color: "white",
-                                        borderRadius: "10px",
-                                        marginLeft: "3rem",
-                                      }}
-                                      onClick={() =>
-                                        modalTrue({
-                                          test: e.split("/")[3],
-                                          i: index,
-                                          day: e.split("/")[4],
-                                        })
-                                      }
-                                    >
-                                      <DoneIcon />
-                                    </button>
-                                  </div>
-                                  <div className="col-2">
-                                    <button
+                                    <Button
                                       className="btn btn-red"
                                       style={{
-                                        marginTop: "1rem",
                                         backgroundColor: "red",
-                                        width: "3rem",
-                                        marginLeft: "5rem",
+                                        marginLeft: "10rem",
+                                        marginTop: "1rem",
                                         color: "white",
                                         borderRadius: "10px",
                                       }}
@@ -336,7 +314,27 @@ function Conges(props: any) {
                                       }
                                     >
                                       <CloseIcon />
-                                    </button>
+                                    </Button>
+                                  </div>
+                                  <div className="col-2">
+                                    <Button
+                                      className="btn btn-green"
+                                      style={{
+                                        marginTop: "1rem",
+                                        backgroundColor: "green",
+                                        color: "white",
+                                        borderRadius: "10px",
+                                      }}
+                                      onClick={() =>
+                                        modalTrue({
+                                          test: e.split("/")[3],
+                                          i: index,
+                                          day: e.split("/")[4],
+                                        })
+                                      }
+                                    >
+                                      <DoneIcon />
+                                    </Button>
                                   </div>
                                 </div>
                               )}
