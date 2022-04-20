@@ -12,7 +12,7 @@ const Home: NextPage = (props: any) => {
         <div className="info-card">
           <div className="container-home-image">
             <Card.Img
-              src="/undraw_Time_management_re_tk5w (2).png"
+              src="/undraw_time_management_re_tk5w_1.png"
               alt="home image"
             />
           </div>
