@@ -52,7 +52,7 @@ export const Layout: React.FC<any> = ({ children }) => {
                   backgroundColor: "white",
                   margin: " 0.8rem 1rem ",
                   color: "2f9dac",
-                  border: "1px solid white",
+                  border: "1px solid",
                 }}
               />
               Collaborateur:{" "}
@@ -138,7 +138,7 @@ export const Layout: React.FC<any> = ({ children }) => {
             </Offcanvas.Header>
             <Offcanvas.Body
               style={{
-                paddingTop: "5rem",
+                paddingTop: "4.6rem",
                 color: "#2f9dac",
                 fontFamily: "Bebas Neue",
                 lineHeight: "6rem",
