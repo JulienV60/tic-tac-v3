@@ -2,6 +2,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import moment from "moment";
 import { getDatabase } from "../../../../../src/database";
 import { ObjectId } from "mongodb";
+import getWeek from "date-fns/getWeek";
+import getDay from "date-fns/getDay";
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -13,13 +15,14 @@ export default async function handler(
   const heureElementStart = moment(data.start).locale("fr").format("LT");
 
   const heureElementEnd = moment(data.end).locale("fr").format("LT");
+  const weekNumber = getWeek(new Date(data.start)) - 2;
+  console.log("VAR VINCENT WEEK", weekNumber);
+  const numeroSemaine = weekNumber;
 
-  const numeroSemaine =
-    parseInt(moment(data.start).locale("fr").format("w")) - 1;
-  console.log(numeroSemaine);
-  const numeroJourSemaine =
-    parseInt(moment(data.start).locale("fr").format("e")) + 1;
-  console.log(numeroJourSemaine);
+  const dayNumber = getDay(new Date(data.start));
+  console.log("VAR VINCENT DAY", dayNumber);
+  const numeroJourSemaine = dayNumber;
+  console.log("MOMENT DAY", numeroJourSemaine);
   const mongodb = await getDatabase();
 
   const collaborateur = await mongodb
