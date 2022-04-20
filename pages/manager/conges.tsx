@@ -324,7 +324,6 @@ function Conges(props: any) {
                                         backgroundColor: "green",
                                         color: "white",
                                         borderRadius: "10px",
-                                        zIndex: "-2",
                                       }}
                                       onClick={() =>
                                         modalTrue({
