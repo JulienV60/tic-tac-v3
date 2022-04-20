@@ -91,7 +91,7 @@ function App(props) {
 
   //à la creation d'un evenement
   const onEventCreated = React.useCallback((args) => {
-    fetch("/api/manager/planning/db/addOneEventIntoDb", {
+    fetch("api/manager/planning/db/addOneEventIntoDb", {
       method: "POST",
       body: JSON.stringify({
         collaborateur: args.event.resource,
@@ -104,7 +104,7 @@ function App(props) {
 
   //à la modification d'un evenement
   const eventUpdate = React.useCallback((args) => {
-    fetch("/api/manager/planning/db/updateOneEventIntoDb", {
+    fetch("api/manager/planning/db/updateOneEventIntoDb", {
       method: "POST",
       body: JSON.stringify({
         collaborateur: args.event.resource,
@@ -117,7 +117,7 @@ function App(props) {
 
   //à la suppression d'un evenement
   const eventClose = React.useCallback((args) => {
-    fetch("/api/manager/planning/db/deleteOneEventIntoDb", {
+    fetch("api/manager/planning/db/deleteOneEventIntoDb", {
       method: "POST",
       body: JSON.stringify({
         collaborateur: args.event.resource,
@@ -131,7 +131,7 @@ function App(props) {
   //function recuperation de la data mongo par semaine
   async function getDataPlanningDb(semaineShow) {
     const data = await fetch(
-      `/api/manager/planning/db/loadPlanningDb?semaine=${semaineShow}`
+      `api/manager/planning/db/loadPlanningDb?semaine=${semaineShow}`
     ).then((result) => result.json());
 
     setDataPlanning(data);
