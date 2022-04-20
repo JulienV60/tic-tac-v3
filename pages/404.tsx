@@ -12,7 +12,14 @@ export default function fail() {
           </form>
         </div>
         <div className="right-side-error">
-          <img className="error-image" src="/undraw_Taken_re_yn20.png" alt="" />
+          <video
+            autoPlay
+            muted
+            playsInline
+            loop
+            className="error-image"
+            src="/undraw_Taken_re_yn20.mp4"
+          />
         </div>
       </div>
     </>
