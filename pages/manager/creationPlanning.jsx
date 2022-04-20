@@ -30,7 +30,12 @@ export const getServerSideProps = async (context) => {
       .toArray();
 
     const listPrenom = listCollaborateurs.map((element) => {
-      return { prenom: element.prenom, _id: element._id, img: element.img };
+      if (element.img === "") {
+        return { prenom: element.prenom, _id: element._id, img: " https://img.wattpad.com/8f19b412f2223afe4288ed0904120a48b7a38ce1/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f5650722d38464e2d744a515349673d3d2d3234323931353831302e313434336539633161633764383437652e6a7067?s=fit&w=720&h=720" };
+
+      } else {
+        return { prenom: element.prenom, _id: element._id, img: element.img };
+      }
     });
 
     const data = await fetch(
@@ -87,8 +92,8 @@ function App(props) {
   }, []);
 
   //à la creation d'un evenement
-  const onEventCreated = React.useCallback((args) => {
-    fetch("/api/manager/planning/db/addOneEventIntoDb", {
+  const onEventCreated = React.useCallback(async(args) => {
+    await fetch("/api/manager/planning/db/addOneEventIntoDb", {
       method: "POST",
       body: JSON.stringify({
         collaborateur: args.event.resource,
@@ -100,8 +105,8 @@ function App(props) {
   }, []);
 
   //à la modification d'un evenement
-  const eventUpdate = React.useCallback((args) => {
-    fetch("/api/manager/planning/db/updateOneEventIntoDb", {
+  const eventUpdate = React.useCallback(async(args) => {
+    await fetch("/api/manager/planning/db/updateOneEventIntoDb", {
       method: "POST",
       body: JSON.stringify({
         collaborateur: args.event.resource,
@@ -113,8 +118,8 @@ function App(props) {
   }, []);
 
   //à la suppression d'un evenement
-  const eventClose = React.useCallback((args) => {
-    fetch("/api/manager/planning/db/deleteOneEventIntoDb", {
+  const eventClose = React.useCallback(async (args) => {
+    await fetch("/api/manager/planning/db/deleteOneEventIntoDb", {
       method: "POST",
       body: JSON.stringify({
         collaborateur: args.event.resource,
