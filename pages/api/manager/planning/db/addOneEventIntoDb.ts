@@ -7,6 +7,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const data = JSON.parse(req.body);
+  console.log(data);
   const dateElement = moment(data.start).locale("fr").format("L");
 
   const heureElementStart = moment(data.start).locale("fr").format("LT");
