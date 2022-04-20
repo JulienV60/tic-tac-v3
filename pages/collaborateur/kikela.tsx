@@ -91,8 +91,7 @@ export default function Kikela(props: any) {
                     <button
                       onClick={handleSubmit}
                       type="button"
-                      className="btn btn-light "
-                      style={{ backgroundColor: "#2f9dac", color: "white" }}
+                      className="home-btn-two"
                     >
                       Rechercher
                     </button>
