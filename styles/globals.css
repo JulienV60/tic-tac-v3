@@ -17,10 +17,11 @@
 .navbar {
   background-color: rgb(48 158 174);
 }
-.container-fluid .btn {
-  background-color: #609819;
-}
 
+.navbar-toggler {
+  color: red;
+  border: white;
+}
 .external-event-calendar {
   border-right: 1px solid #ccc;
 }

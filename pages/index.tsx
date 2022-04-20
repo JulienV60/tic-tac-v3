@@ -41,7 +41,8 @@ const Home: NextPage = (props: any) => {
                   variant="#2f9dac"
                   color="#2f9dac"
                 >
-                  Accès RH <ManageAccountsIcon />
+                  Accès RH{" "}
+                  <ManageAccountsIcon style={{ marginLeft: "1.2rem" }} />
                 </Button>
               </Link>
             </form>

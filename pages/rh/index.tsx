@@ -6,16 +6,21 @@ export default function Rh(props: any) {
   const [selectedImage, setSelectedImage] = React.useState(null);
   return (
     <div
-      style={{ backgroundColor: "#2f9dac", height: "100%", marginTop: "5rem" }}
+      className=""
+      style={{
+        backgroundColor: "#2f9dac",
+        height: "62.5rem",
+      }}
     >
       <Link href="/" passHref={true}>
         <Button
           type="submit"
-          className="home-btn-one"
+          style={{ marginLeft: "1rem" }}
+          className="home-btn"
           variant="#2f9dac"
           color="#2f9dac"
         >
-          Page Accueil
+          <span className="connexionText">Page Accueil</span>
         </Button>
       </Link>
       <h1
@@ -49,7 +54,6 @@ export default function Rh(props: any) {
               type="text"
               className="form-control"
               id="formGroupExampleInput"
-              placeholder="Nom"
               name="nom"
             />
           </div>
@@ -60,7 +64,6 @@ export default function Rh(props: any) {
             type="text"
             className="form-control"
             id="formGroupExampleInput2"
-            placeholder="Prenom"
             name="prenom"
           />
           <label style={{ fontFamily: "Bebas Neue", fontSize: "2rem" }}>
@@ -70,7 +73,6 @@ export default function Rh(props: any) {
             type="text"
             className="form-control"
             id="formGroupExampleInput2"
-            placeholder="Email"
             name="email"
           />{" "}
           <label style={{ fontFamily: "Bebas Neue", fontSize: "2rem" }}>
@@ -80,7 +82,6 @@ export default function Rh(props: any) {
             type="text"
             className="form-control"
             id="formGroupExampleInput2"
-            placeholder="Numero magasin"
             name="numeromagasin"
           />{" "}
           <label
@@ -96,7 +97,6 @@ export default function Rh(props: any) {
             type="text"
             className="form-control"
             id="formGroupExampleInput2"
-            placeholder="Numero rayon"
             name="numerorayon"
           />
           <div
@@ -146,18 +146,14 @@ export default function Rh(props: any) {
               Manager
             </label>
           </div>{" "}
-          <button
+          <Button
             type="submit"
-            className="btn"
-            style={{
-              backgroundColor: "white",
-              color: "#2f9dac",
-              width: "10rem",
-            }}
+            className="home-btn"
+            variant="#2f9dac"
+            color="#2f9dac"
           >
-            Envoyer
-          </button>{" "}
-          {/* <CldCustUploadLgRestApi /> */}{" "}
+            <span className="connexionText">Envoyer</span>
+          </Button>
         </form>
       </div>
     </div>
