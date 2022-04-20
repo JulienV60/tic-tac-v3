@@ -16,10 +16,10 @@ export default async function handler(
 
   const numeroSemaine =
     parseInt(moment(data.start).locale("fr").format("w")) - 1;
-
+  console.log(numeroSemaine);
   const numeroJourSemaine =
     parseInt(moment(data.start).locale("fr").format("e")) + 1;
-
+  console.log(numeroJourSemaine);
   const mongodb = await getDatabase();
 
   const collaborateur = await mongodb
