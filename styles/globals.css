@@ -41,16 +41,15 @@
   height: 100%;
 }
 
-/*CONGES TITLE */
+/* =========== PAGE CONGES ========== */
+
 .container-picker {
-  max-width: 50vw;
+  max-width: 20ch;
   display: flex;
   flex-wrap: wrap;
+  margin: 1em;
 }
-.leave-picker {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  margin-left: 1em;
-}
+
 .container {
   max-width: 90%;
   margin-top: 4em;
@@ -64,8 +63,10 @@
 }
 .leave-title {
   background-color: #2f9dac;
-  color: #f1f1f1;
-  margin-bottom: 2em;
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 1em;
+  border-radius: 5px;
 }
 
 .leave-balances {
@@ -74,25 +75,36 @@
 }
 
 .leave-history {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(auto-fit, 186px);
-  color: white;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
   text-align: center;
-  justify-content: center;
 }
-.leave-history > * {
-  background-color: #2f9dac;
-  border-radius: 3%;
-  margin: 1em;
+.leave-history > div {
+  margin: 1rem 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
 }
-
+.container-leave {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
 .resource-template-content {
   position: relative;
   padding-left: 80px;
   text-align: left;
 }
+.green {
+  background-color: darkgreen;
+  color: #fff;
+  padding: 1rem;
+}
+.red {
+  background-color: darkred;
+  color: #fff;
+  padding: 1rem;
+}
 
+/* =========== FIN PAGE CONGES  ========== */
 /* ######## Form Pointages ######## */
 
 .form-example-pointages .container {
