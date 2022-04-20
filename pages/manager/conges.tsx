@@ -9,6 +9,7 @@ import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
+import Link from "next/link";
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const mongodb = await getDatabase();
 
@@ -296,32 +297,11 @@ function Conges(props: any) {
                                 <div className="row">
                                   <div className="col-2">
                                     <Button
-                                      className="btn btn-green"
-                                      style={{
-                                        backgroundColor: "green",
-                                        marginLeft: "4rem",
-                                        marginTop: "1rem",
-                                        color: "white",
-                                        borderRadius: "10px",
-                                      }}
-                                      onClick={() =>
-                                        modalTrue({
-                                          test: e.split("/")[3],
-                                          i: index,
-                                          day: e.split("/")[4],
-                                        })
-                                      }
-                                    >
-                                      <DoneIcon />
-                                    </Button>
-                                  </div>
-                                  <div className="col-2">
-                                    <Button
                                       className="btn btn-red"
                                       style={{
-                                        marginTop: "1rem",
                                         backgroundColor: "red",
-                                        marginLeft: "5rem",
+                                        marginLeft: "10rem",
+                                        marginTop: "1rem",
                                         color: "white",
                                         borderRadius: "10px",
                                       }}
@@ -334,6 +314,27 @@ function Conges(props: any) {
                                       }
                                     >
                                       <CloseIcon />
+                                    </Button>
+                                  </div>
+                                  <div className="col-2">
+                                    <Button
+                                      className="btn btn-green"
+                                      style={{
+                                        marginTop: "1rem",
+                                        backgroundColor: "green",
+                                        color: "white",
+                                        borderRadius: "10px",
+                                        zIndex: "-2",
+                                      }}
+                                      onClick={() =>
+                                        modalTrue({
+                                          test: e.split("/")[3],
+                                          i: index,
+                                          day: e.split("/")[4],
+                                        })
+                                      }
+                                    >
+                                      <DoneIcon />
                                     </Button>
                                   </div>
                                 </div>
