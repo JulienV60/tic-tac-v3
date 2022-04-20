@@ -2,23 +2,20 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import moment from "moment";
 import { getDatabase } from "../../../../../src/database";
 import { ObjectId } from "mongodb";
+import getWeek from "date-fns/getWeek";
+import getDay from "date-fns/getDay";
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const data = JSON.parse(req.body);
-  console.log(data);
   const dateElement = moment(data.start).locale("fr").format("L");
-
   const heureElementStart = moment(data.start).locale("fr").format("LT");
-
   const heureElementEnd = moment(data.end).locale("fr").format("LT");
-
-  const numeroSemaine =
-    parseInt(moment(data.start).locale("fr").format("w")) - 1;
-
-  const numeroJourSemaine =
-    parseInt(moment(data.start).locale("fr").format("e")) + 1;
+  const weekNumber = getWeek(new Date(data.start)) - 2;
+  const numeroSemaine = weekNumber;
+  const dayNumber = getDay(new Date(data.start));
+  const numeroJourSemaine = dayNumber;
 
   const mongodb = await getDatabase();
 
