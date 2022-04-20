@@ -279,7 +279,7 @@ function Conges(props: any) {
                                   }&i=${index}&day=${e.split("/")[4]}`}
                                   method="POST"
                                 >
-                                  <button
+                                  <Button
                                     className="btn"
                                     style={{
                                       backgroundColor: "red",
@@ -290,20 +290,19 @@ function Conges(props: any) {
                                     }}
                                   >
                                     <CloseIcon />
-                                  </button>
+                                  </Button>
                                 </form>
                               ) : (
                                 <div className="row">
                                   <div className="col-2">
-                                    <button
-                                      className="btn"
+                                    <Button
+                                      className="btn btn-green"
                                       style={{
-                                        marginTop: "1rem",
                                         backgroundColor: "green",
-                                        width: "3rem",
+                                        marginLeft: "4rem",
+                                        marginTop: "1rem",
                                         color: "white",
                                         borderRadius: "10px",
-                                        marginLeft: "3rem",
                                       }}
                                       onClick={() =>
                                         modalTrue({
@@ -314,15 +313,14 @@ function Conges(props: any) {
                                       }
                                     >
                                       <DoneIcon />
-                                    </button>
+                                    </Button>
                                   </div>
                                   <div className="col-2">
-                                    <button
+                                    <Button
                                       className="btn btn-red"
                                       style={{
                                         marginTop: "1rem",
                                         backgroundColor: "red",
-                                        width: "3rem",
                                         marginLeft: "5rem",
                                         color: "white",
                                         borderRadius: "10px",
@@ -336,7 +334,7 @@ function Conges(props: any) {
                                       }
                                     >
                                       <CloseIcon />
-                                    </button>
+                                    </Button>
                                   </div>
                                 </div>
                               )}
