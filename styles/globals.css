@@ -4,6 +4,10 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+.mbsc-schedule-event {
+  font-size: 2rem;
+  text-align: center;
+}
 .dropdown :active {
   background-color: white;
 }
