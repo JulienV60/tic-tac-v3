@@ -92,8 +92,8 @@ function App(props) {
   }, []);
 
   //à la creation d'un evenement
-  const onEventCreated = React.useCallback((args) => {
-    fetch("/api/manager/planning/db/addOneEventIntoDb", {
+  const onEventCreated = React.useCallback(async(args) => {
+    await fetch("/api/manager/planning/db/addOneEventIntoDb", {
       method: "POST",
       body: JSON.stringify({
         collaborateur: args.event.resource,
@@ -105,8 +105,8 @@ function App(props) {
   }, []);
 
   //à la modification d'un evenement
-  const eventUpdate = React.useCallback((args) => {
-    fetch("/api/manager/planning/db/updateOneEventIntoDb", {
+  const eventUpdate = React.useCallback(async(args) => {
+    await fetch("/api/manager/planning/db/updateOneEventIntoDb", {
       method: "POST",
       body: JSON.stringify({
         collaborateur: args.event.resource,
@@ -118,8 +118,8 @@ function App(props) {
   }, []);
 
   //à la suppression d'un evenement
-  const eventClose = React.useCallback((args) => {
-    fetch("/api/manager/planning/db/deleteOneEventIntoDb", {
+  const eventClose = React.useCallback(async (args) => {
+    await fetch("/api/manager/planning/db/deleteOneEventIntoDb", {
       method: "POST",
       body: JSON.stringify({
         collaborateur: args.event.resource,
