@@ -164,6 +164,16 @@
   color: white;
 }
 
+.boutonValidationKik {
+  width: 6.95rem;
+  height: 3rem;
+  position: relative;
+  top: 11%;
+  left: 10.5%;
+  background-color: #2f9dac;
+  color: white;
+}
+
 .boutonValidation:hover {
   transition: all 0.2s ease-in-out;
   color: #2f9dac;
@@ -232,6 +242,7 @@
 }
 
 .home-btn {
+  color: #f1f1f1;
   background-color: #2f9dac;
   font-size: 18px;
   text-align: center;
