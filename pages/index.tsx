@@ -6,18 +6,6 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 const Home: NextPage = (props: any) => {
   return (
     <div className="entireHomepage">
-      <div className="">
-        <Link href="/rh" passHref={true}>
-          <Button
-            type="submit"
-            className="home-btn-one"
-            variant="#2f9dac"
-            color="#2f9dac"
-          >
-            Accès RH <ManageAccountsIcon />
-          </Button>
-        </Link>
-      </div>
       {/* ======= HOMEPAGE NO CONNECTED START ======== */}
 
       <section className="home-no-connected">
@@ -35,17 +23,29 @@ const Home: NextPage = (props: any) => {
             Bienvenue, sur le nouveau{" "}
             <span className="TacTicHomepage">Tac-Tic</span>.
           </h2>
-          <form action="/api/auth/login" method="GET">
-            <Button
-              type="submit"
-              className="home-btn"
-              variant="#2f9dac"
-              color="#2f9dac"
-            >
-              <span className="connexionText">Connexion</span>
-              <LoginIcon />
-            </Button>
-          </form>
+          <div className="boutonConnexion">
+            <form action="/api/auth/login" method="GET">
+              <Button
+                type="submit"
+                className="home-btn"
+                variant="#2f9dac"
+                color="#2f9dac"
+              >
+                <span className="connexionText">Connexion</span>
+                <LoginIcon />
+              </Button>
+              <Link href="/rh" passHref={true}>
+                <Button
+                  type="submit"
+                  className="home-btn"
+                  variant="#2f9dac"
+                  color="#2f9dac"
+                >
+                  Accès RH <ManageAccountsIcon />
+                </Button>
+              </Link>
+            </form>
+          </div>
         </div>
       </section>
 

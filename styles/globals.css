@@ -207,6 +207,15 @@
 .rigth-side > h2 {
   font-family: "Bebas Neue", cursive;
   white-space: nowrap;
+  margin-bottom: 1.5rem;
+  white-space: nowrap;
+}
+
+.boutonConnexion form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .home-btn {
@@ -215,35 +224,7 @@
   text-align: center;
   padding: 0.8em;
   border-radius: 5px;
-  margin-top: 3em;
-  border: 1px solid #f1f1f1;
-  width: 10em;
-  cursor: pointer;
-}
-
-.home-btn-one {
-  background-color: #2f9dac;
-  font-size: 18px;
-  text-align: center;
-  color: #f1f1f1;
-  padding: 0.8em;
-  border-radius: 5px;
   margin-top: 1em;
-  margin-left: 1em;
-  border: 1px solid #f1f1f1;
-  width: 10em;
-  cursor: pointer;
-}
-
-.home-btn-two {
-  background-color: #2f9dac;
-  font-size: 18px;
-  text-align: center;
-  color: #f1f1f1;
-  /* padding: 0.8em; */
-  border-radius: 5px;
-  /* margin-top: 1em; */
-  /* margin-left: 1em; */
   border: 1px solid #f1f1f1;
   width: 10em;
   cursor: pointer;
@@ -255,20 +236,6 @@
 }
 
 .home-btn:hover {
-  transition: all 0.2s ease-in-out;
-  color: #2f9dac;
-  border: 1px solid #2f9dac;
-  background: #f1f1f1;
-}
-
-.home-btn-one:hover {
-  transition: all 0.2s ease-in-out;
-  color: #2f9dac;
-  border: 1px solid #2f9dac;
-  background: #f1f1f1;
-}
-
-.home-btn-two:hover {
   transition: all 0.2s ease-in-out;
   color: #2f9dac;
   border: 1px solid #2f9dac;
@@ -299,27 +266,25 @@
   display: flex;
   height: 100vh;
   overflow-y: hidden;
-  /* background-image: url("../public/FondAdeo.png"); */
-  background-size: cover;
+}
+
+.container-home-image img {
+  width: auto;
+  height: auto;
 }
 
 /* ------ HOMEPAGE NO CONNECTED : Medias queries ------- */
 
 @media screen and (max-width: 1001px) {
   .home-no-connected {
-    padding: 4em 2em 1em;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .container-home-image img {
-    width: 450px;
+    padding: 0em 2em 10em;
   }
 }
 
 @media screen and (max-width: 1420px), (min-width: 1130px) {
   .container-home-image img {
-    height: 450px;
+    height: 400px;
+    width: auto;
   }
 }
 
