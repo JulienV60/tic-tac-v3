@@ -764,7 +764,7 @@
 /* =============== FIN TEST==============  */
 
 /* ============= PAGE MANAGER/CONGES ============= */
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1490px) {
   .row {
     display: flex;
 
@@ -780,11 +780,8 @@
     align-items: center;
     justify-content: flex-start;
   }
-  .col-2 .btn {
-    margin-right: 3rem;
-  }
   .col-2 .btn-red {
-    margin-right: 4.7rem;
+    margin-right: 10rem;
   }
 }
 /* ============= FIN PAGE MANAGER/CONGES ============= */
