@@ -91,7 +91,7 @@ export default function Kikela(props: any) {
                     <button
                       onClick={handleSubmit}
                       type="button"
-                      className="home-btn-two"
+                      className="home-btn"
                     >
                       Rechercher
                     </button>
