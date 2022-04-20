@@ -41,14 +41,14 @@ const Layout: React.FC<any> = ({ children }) => {
               style={{
                 fontFamily: "Bebas Neue",
                 color: "white",
-                fontSize: "1.6rem",
+                fontSize: "1.7rem",
               }}
             >
               <Navbar.Toggle
                 aria-controls="offcanvasNavbar"
                 style={{
                   backgroundColor: "white",
-                  margin: "0.8rem 2rem",
+                  margin: "0.9rem 2rem",
                   color: "2f9dac",
                 }}
               />
@@ -118,12 +118,12 @@ const Layout: React.FC<any> = ({ children }) => {
                 style={{
                   color: "#2f9dac",
                   fontFamily: "Bebas Neue",
-                  marginBottom: "1.6rem",
+                  marginBottom: "1.8rem",
                   paddingTop: "0.5rem",
                   fontSize: "3.4rem",
                   lineHeight: "2rem",
                   paddingLeft: "8.7rem",
-                  height: "1.5rem",
+                  height: "1.4rem",
                 }}
               >
                 Menu
