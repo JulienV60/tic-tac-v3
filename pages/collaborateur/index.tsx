@@ -235,6 +235,7 @@ export default function Home(props: any) {
 
                       <p className="dash">
                         {" "}
+                        Début:
                         {element.horairesStart === undefined ? (
                           <>Planning non programmé</>
                         ) : (
@@ -242,7 +243,7 @@ export default function Home(props: any) {
                         )}
                       </p>
 
-                      <p className="dash">{element.horairesEnd}</p>
+                      <p className="dash">Fin: {element.horairesEnd}</p>
                     </div>
                     {/* ============ FIN SEMAINE SUIVANTE  ============== */}
                   </>
