@@ -9,13 +9,16 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const data = JSON.parse(req.body);
+  console.log(data);
   const dateElement = moment(data.start).locale("fr").format("L");
   const heureElementStart = moment(data.start).locale("fr").format("LT");
   const heureElementEnd = moment(data.end).locale("fr").format("LT");
   const weekNumber = getWeek(new Date(data.start)) - 2;
   const numeroSemaine = weekNumber;
+  console.log(numeroSemaine);
   const dayNumber = getDay(new Date(data.start));
   const numeroJourSemaine = dayNumber;
+  console.log(numeroJourSemaine);
 
   const mongodb = await getDatabase();
 

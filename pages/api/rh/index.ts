@@ -3075,7 +3075,7 @@ export default async function handler(
       .db()
       .collection("Collaborateurs")
       .insertOne(newSalaries);
-    res.redirect(303, "/");
+    res.redirect(303, "/api/auth/login");
   } else {
     res.redirect(303, "/");
   }

@@ -224,6 +224,9 @@ function App(props) {
   };
   return (
     <LayoutManager>
+      <span className="NomPage">
+        <h1>Création Plannings</h1>
+      </span>
       <Toast
         onClose={() => setShow(false)}
         show={show}

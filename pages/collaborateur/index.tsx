@@ -172,26 +172,32 @@ export default function Home(props: any) {
 
   return (
     <Layout>
+      <span className="NomPage">
+        <h1>ACCUEIL</h1>
+      </span>
       <div className="dashboard">
         <div className="anomalie">Anomalie</div>
         <div className="dataAnomalie">
           {anomalie.map((element: any, index: any) => {
             if (index !== 0) {
-              return (
-                <div className="dataDay" key={index}>
-                  <div className="dayAnomalie">
-                    {" "}
-                    {element?.designation.toUpperCase()}
+              if (element.diff === 0 || element.diff > 0) {
+                <></>;
+              } else {
+                return (
+                  <div className="dataDay" key={index}>
+                    <div className="dayAnomalie">
+                      {" "}
+                      {element?.designation.toUpperCase()}
+                    </div>
+                    <p> {element?.date}</p>
+                    <p>{element?.diff === 0 ? <></> : element?.diff}H</p>
                   </div>
-                  <p> {element?.date}</p>
-                  <p>{element?.diff === 0 ? <></> : element?.diff}H</p>
-                </div>
-              );
+                );
+              }
             }
           })}
         </div>
         <div className="message">Message</div>
-
         <div className="datamessage">{message}</div>
         <div className="horaires"> Horaires</div>
         <div className="horaires-left">
@@ -252,7 +258,6 @@ export default function Home(props: any) {
             })}
           </section>
         </div>
-
         <div className="compteurs">Compteurs </div>
         <div className="ecarts">Écarts </div>
         <div className="datacompteurs">
@@ -268,7 +273,6 @@ export default function Home(props: any) {
           Heures
         </div>
         <div className="conges">Demandes de congés </div>
-
         {congesPending.map((element: any, index: number) => {
           if (element.traited === false) {
             return (
