@@ -42,9 +42,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             nameday: element.designation,
             date: element.date,
             horairesStart: moment(element.horaires.split("/")[0]).format(
-              "HH:MM"
+              "HH:mm"
             ),
-            horairesEnd: moment(element.horaires.split("/")[1]).format("HH:MM"),
+            horairesEnd: moment(element.horaires.split("/")[1]).format("HH:mm"),
           };
         }
       }
@@ -55,8 +55,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         return {
           nameday: element.designation,
           date: element.date,
-          horairesStart: moment(element.horaires.split("/")[0]).format("HH:MM"),
-          horairesEnd: moment(element.horaires.split("/")[1]).format("HH:MM"),
+          horairesStart: moment(element.horaires.split("/")[0]).format("HH:mm"),
+          horairesEnd: moment(element.horaires.split("/")[1]).format("HH:mm"),
         };
       }
     });
