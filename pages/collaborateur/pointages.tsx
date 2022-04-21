@@ -14,6 +14,7 @@ import jwt_decode from "jwt-decode";
 import moment from "moment";
 import { Form, Toast } from "react-bootstrap";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import getWeek from "date-fns/getWeek";
 export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
   const accessTokken = req.cookies.IdToken;
   let profile;
@@ -95,7 +96,7 @@ export default function Pointages(props: any) {
       const dataHoraires = await fetch("/api/collaborateur/pointages", {
         method: "POST",
         body: JSON.stringify({
-          semaine: parseInt(moment(ev.value).locale("fr").format("w")) - 1,
+          semaine: getWeek(new Date(ev.value))-1;
           jour: ev.value,
         }),
       })
