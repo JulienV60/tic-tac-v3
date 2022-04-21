@@ -130,6 +130,9 @@ function Conges(props: any) {
 
   return (
     <LayoutManager>
+      <span className="NomPage">
+        <h1>Demandes Congés</h1>
+      </span>
       <div className="">
         <Modal show={showTrue} onHide={handleCloseTrue} centered>
           <Modal.Header closeButton>
@@ -177,7 +180,6 @@ function Conges(props: any) {
             </Button>
           </Modal.Footer>
         </Modal>
-        <div className="titreDemande">Demande de congés</div>
         {result.map((element: any) => {
           if (element !== null) {
             if (element.allCongeTraited.includes(false)) {
@@ -193,6 +195,7 @@ function Conges(props: any) {
                         backgroundColor: "#888",
                         paddingTop: "2rem",
                         paddingLeft: "1rem",
+                        paddingRight: "1rem",
                         color: "white",
                         borderRadius: "10px",
                       }}

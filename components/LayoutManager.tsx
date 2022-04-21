@@ -177,7 +177,7 @@ const Layout: React.FC<any> = ({ children }) => {
                     }}
                     href="/manager/conges"
                   >
-                    Demande Congés
+                    Demandes Congés
                   </Dropdown.Item>
                   <Dropdown.Item
                     style={{

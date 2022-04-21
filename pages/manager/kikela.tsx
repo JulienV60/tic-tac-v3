@@ -1,5 +1,5 @@
 import { GetServerSideProps } from "next";
-import React from "react";
+import React, { useState } from "react";
 import LayoutManager from "../../components/LayoutManager";
 import jwt_decode from "jwt-decode";
 import PageNotFound from "../../components/PageNotFound";
@@ -34,7 +34,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 export default function Kikela(props: any) {
   const [prenom, setPrenom] = React.useState("");
   const [nom, setNom] = React.useState("");
-  const [dispo, setDispo] = React.useState("");
+  const [afficheResult, setAfficheResult] = React.useState(<></>);
   const handleSubmit = async (event: any) => {
     if (prenom !== "" || nom !== "") {
       const test = await fetch("/api/kikela", {
@@ -43,18 +43,58 @@ export default function Kikela(props: any) {
       }).then((result) => result.json());
 
       if (test === true) {
-        setDispo("Present sur la base du planning");
+        setAfficheResult(
+          <div
+            className="container p-5 my-5 border rounded"
+            style={{
+              backgroundColor: "#2f9dac",
+            }}
+          >
+            <span
+              style={{
+                backgroundColor: "white",
+                fontFamily: "Bebas Neue",
+                textAlign: "center",
+                fontSize: "2rem",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {nom} {prenom} est present sur la base du planning
+            </span>
+          </div>
+        );
       } else {
-        setDispo("Absent sur la base du planning");
+        setAfficheResult(
+          <div
+            className="container p-5 my-5 border rounded"
+            style={{
+              backgroundColor: "#2f9dac",
+              fontFamily: "Bebas Neue",
+              textAlign: "center",
+            }}
+          >
+            {nom} {prenom} est absent sur la base du planning
+          </div>
+        );
       }
-    } else {
-      setDispo("");
     }
   };
 
   if (props.profileUser === "Manager") {
     return (
       <LayoutManager>
+        <span className="NomPage">
+          <h1>Kikéla</h1>
+        </span>
+        <div className="container" style={{ textAlign: "center" }}>
+          <h2 style={{ fontFamily: "Bebas Neue" }}>
+            Verifiez si un collaborateur travail aujourd&apos;hui, ses horaires
+            ne seront pas affichés pour des raisons de confidentialité.
+          </h2>
+        </div>
         <div>
           <div>
             <div
@@ -92,6 +132,7 @@ export default function Kikela(props: any) {
                       onClick={handleSubmit}
                       type="button"
                       className="home-btn"
+                      style={{ marginTop: "0" }}
                     >
                       Rechercher
                     </button>
@@ -100,20 +141,7 @@ export default function Kikela(props: any) {
               </form>
             </div>
 
-            <div
-              className="container p-5 my-5 border rounded"
-              style={{
-                backgroundColor: "#2f9dac",
-              }}
-            >
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item mt-2 rounded">Nom: {nom}</li>
-                <li className="list-group-item mt-2 rounded">
-                  Prénom: {prenom}
-                </li>
-                <li className="list-group-item mt-2 rounded">Dispo: {dispo}</li>
-              </ul>
-            </div>
+            {afficheResult}
           </div>
         </div>
       </LayoutManager>

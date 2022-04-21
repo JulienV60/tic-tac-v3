@@ -12,8 +12,8 @@ import { Layout } from "../../components/LayoutCollab";
 import { userProfil } from "../../src/userInfos";
 import jwt_decode from "jwt-decode";
 import moment from "moment";
-import { Form } from "react-bootstrap";
-
+import { Form, Toast } from "react-bootstrap";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
   const accessTokken = req.cookies.IdToken;
   let profile;
@@ -57,7 +57,7 @@ export default function Pointages(props: any) {
   const [heureMatinCorrige, setHeureMatinCorrige] = React.useState("");
   const [heureApremCorrige, setHeureApremCorrige] = React.useState("");
   const [motif, setMotif] = React.useState("autres");
-
+  const [show, setShow] = React.useState(false);
   const motifChange = async (ev: any) => {
     setMotif(ev);
   };
@@ -84,6 +84,7 @@ export default function Pointages(props: any) {
         motif: motif,
       }),
     });
+    setShow(true);
   };
 
   const pickerChangeJour = async (ev: any) => {
@@ -120,12 +121,45 @@ export default function Pointages(props: any) {
 
   return (
     <div>
-      <Layout />
+      <Layout />{" "}
+      <Toast
+        onClose={() => setShow(false)}
+        show={show}
+        className="modalPlanning"
+        delay={2000}
+        autohide
+        style={{
+          backgroundColor: "white",
+          marginTop: "15rem",
+          width: "25rem",
+          height: "10rem",
+        }}
+      >
+        <Toast.Header>
+          <strong
+            className="me-auto"
+            style={{
+              fontSize: "3rem",
+              textAlign: "center",
+              color: "black",
+              fontFamily: "Bebas Neue",
+              marginTop: "1rem",
+              marginLeft: "1.5rem",
+            }}
+          >
+            Modification validée !
+          </strong>
+        </Toast.Header>
+      </Toast>
+      <span className="NomPage">
+        <h1>Pointages</h1>
+      </span>
       <form className="form-example-pointages container">
         <div
           className="container p-5 my-5 border"
           style={{
             backgroundColor: "#2f9dac",
+            borderRadius: "10px",
           }}
         >
           <div className="form-example-jour">
@@ -315,7 +349,22 @@ export default function Pointages(props: any) {
                 </>
               ) : (
                 <>
-                  <div>Aucun horaire à corriger</div>
+                  <div>
+                    {" "}
+                    <span
+                      style={{
+                        fontFamily: "Bebas Neue",
+                        textAlign: "center",
+                        fontSize: "3rem",
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      Aucun horaire à corriger ! 🥳
+                    </span>
+                  </div>
                 </>
               )}
 

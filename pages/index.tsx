@@ -25,24 +25,21 @@ const Home: NextPage = (props: any) => {
           </h2>
           <div className="boutonConnexion">
             <form action="/api/auth/login" method="GET">
-              <Button
-                type="submit"
-                className="home-btn"
-                variant="#2f9dac"
-                color="#2f9dac"
-              >
+              <Button type="submit" variant="#2f9dac" className="home-btn">
                 <span className="connexionText">Connexion</span>
-                <LoginIcon />
+                <LoginIcon style={{ color: "black" }} />
               </Button>
               <Link href="/rh" passHref={true}>
                 <Button
                   type="submit"
                   className="home-btn"
+                  style={{ color: "black" }}
                   variant="#2f9dac"
-                  color="#2f9dac"
                 >
-                  Accès RH{" "}
-                  <ManageAccountsIcon style={{ marginLeft: "1.2rem" }} />
+                  Accès RH
+                  <ManageAccountsIcon
+                    style={{ marginLeft: "1.2rem", color: "black" }}
+                  />
                 </Button>
               </Link>
             </form>

@@ -131,6 +131,9 @@ export default function Conges(props: any) {
   return (
     <>
       <Layout>
+        <span className="NomPage">
+          <h1>Congés</h1>
+        </span>
         <div className="container">
           {/* ============== SOLDES DES CONGES PAYES ============ */}
 
