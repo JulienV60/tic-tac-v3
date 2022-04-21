@@ -180,7 +180,9 @@ export default function Home(props: any) {
         <div className="dataAnomalie">
           {anomalie.map((element: any, index: any) => {
             if (index !== 0) {
-
+              if (element === null) {
+                <></>;
+              } else {
                 return (
                   <div className="dataDay" key={index}>
                     <div className="dayAnomalie">
@@ -191,7 +193,7 @@ export default function Home(props: any) {
                     <p>{element?.diff === 0 ? <></> : element?.diff}H</p>
                   </div>
                 );
-
+              }
             }
           })}
         </div>
