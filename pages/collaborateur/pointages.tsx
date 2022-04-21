@@ -90,13 +90,13 @@ export default function Pointages(props: any) {
 
   const pickerChangeJour = async (ev: any) => {
     console.log(ev.value);
-    console.log(parseInt(moment(ev.value).locale("fr").format("w")) - 1);
+    console.log(getWeek(new Date(ev.value)) - 2);
     setMyJour(ev.value);
     if (jour !== null) {
       const dataHoraires = await fetch("/api/collaborateur/pointages", {
         method: "POST",
         body: JSON.stringify({
-          semaine: getWeek(new Date(ev.value)) - 2,
+          semaine: getWeek(new Date(ev.value)) - 1,
           jour: ev.value,
         }),
       })
@@ -105,6 +105,7 @@ export default function Pointages(props: any) {
 
       setAfficheFormPointage(true);
       setHeurePlanif(parseInt(dataHoraires.heuresPlanif.toString()));
+      console.log(dataHoraires);
       setHeuresRea(parseInt(dataHoraires.heuresrea.toString()));
 
       if (dataHoraires.heureMatin === "") {
