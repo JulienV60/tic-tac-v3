@@ -180,7 +180,7 @@ export default function Home(props: any) {
         <div className="dataAnomalie">
           {anomalie.map((element: any, index: any) => {
             if (index !== 0) {
-              if (element === null) {
+              if (element === null || element.diff > 0) {
                 <></>;
               } else {
                 return (
