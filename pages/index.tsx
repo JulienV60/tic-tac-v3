@@ -29,19 +29,19 @@ const Home: NextPage = (props: any) => {
                 <span className="connexionText">Connexion</span>
                 <LoginIcon style={{ color: "black" }} />
               </Button>
-              <Link href="/rh" passHref={true}>
-                <Button
-                  type="submit"
-                  className="home-btn"
-                  style={{ color: "black" }}
-                  variant="#2f9dac"
-                >
-                  Accès RH
-                  <ManageAccountsIcon
-                    style={{ marginLeft: "1.2rem", color: "black" }}
-                  />
-                </Button>
-              </Link>
+            </form>
+            <form action="/rh" method="GET">
+              <Button
+                type="submit"
+                className="home-btn"
+                style={{ color: "black" }}
+                variant="#2f9dac"
+              >
+                Accès RH
+                <ManageAccountsIcon
+                  style={{ marginLeft: "1.2rem", color: "black" }}
+                />
+              </Button>
             </form>
           </div>
         </div>

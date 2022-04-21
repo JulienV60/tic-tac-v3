@@ -296,7 +296,7 @@ export default function Pointages(props: any) {
                         <Datepicker
                           controls={["time"]}
                           themeVariant="light"
-                          display="bottom"
+                          display="anchored"
                           select="date"
                           showRangeLabels={true}
                           touchUi={true}
@@ -311,7 +311,7 @@ export default function Pointages(props: any) {
                         Après-midi
                         <Datepicker
                           controls={["time"]}
-                          display="bottom"
+                          display="anchored"
                           themeVariant="light"
                           select="date"
                           showRangeLabels={true}
