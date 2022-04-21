@@ -96,7 +96,7 @@ export default function Pointages(props: any) {
       const dataHoraires = await fetch("/api/collaborateur/pointages", {
         method: "POST",
         body: JSON.stringify({
-          semaine: getWeek(new Date(ev.value))-1;
+          semaine: getWeek(new Date(ev.value)) - 1,
           jour: ev.value,
         }),
       })
