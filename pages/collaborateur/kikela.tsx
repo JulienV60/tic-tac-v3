@@ -89,6 +89,7 @@ export default function Kikela(props: any) {
         <span className="NomPage">
           <h1>Kikéla</h1>
         </span>
+        g
         <div className="container" style={{ textAlign: "center" }}>
           <h2 style={{ fontFamily: "Bebas Neue" }}>
             Verifiez si un collaborateur travail aujourd&apos;hui, ses horaires

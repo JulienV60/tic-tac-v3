@@ -138,6 +138,7 @@ function App(props) {
 
   //function recuperation de la data mongo par semaine
   async function getDataPlanningDb(semaineShow) {
+    console.log(semaineShow);
     const data = await fetch(
       `/api/manager/planning/db/loadPlanningDb?semaine=${semaineShow}`
     ).then((result) => result.json());
@@ -182,13 +183,13 @@ function App(props) {
 
   const renderDay = (args) => {
     const date = args.date;
-
     const dayNr = date.getDay();
     const task =
       milestones.find((obj) => {
         return +new Date(obj.date) === +date;
       }) || {};
-    const numeroSemaine = weekNumber;
+
+    const numeroSemaine = getWeek(new Date(date)) - 1;
     setsemaineShow(numeroSemaine);
 
     return (
