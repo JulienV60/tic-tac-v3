@@ -180,19 +180,21 @@ export default function Home(props: any) {
         <div className="dataAnomalie">
           {anomalie.map((element: any, index: any) => {
             if (index !== 0) {
-              if (element === null || element.diff > 0) {
+              if (element === null) {
                 <></>;
               } else {
-                return (
-                  <div className="dataDay" key={index}>
-                    <div className="dayAnomalie">
-                      {" "}
-                      {element?.designation.toUpperCase()}
+                if (element?.diff < 0) {
+                  return (
+                    <div className="dataDay" key={index}>
+                      <div className="dayAnomalie">
+                        {" "}
+                        {element?.designation.toUpperCase()}
+                      </div>
+                      <p> {element?.date}</p>
+                      <p>{element?.diff === 0 ? <></> : element?.diff}H</p>
                     </div>
-                    <p> {element?.date}</p>
-                    <p>{element?.diff === 0 ? <></> : element?.diff}H</p>
-                  </div>
-                );
+                  );
+                }
               }
             }
           })}
