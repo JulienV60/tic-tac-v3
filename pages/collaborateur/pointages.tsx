@@ -88,6 +88,8 @@ export default function Pointages(props: any) {
   };
 
   const pickerChangeJour = async (ev: any) => {
+    console.log(ev.value);
+    console.log(parseInt(moment(ev.value).locale("fr").format("w")) - 1);
     setMyJour(ev.value);
     if (jour !== null) {
       const dataHoraires = await fetch("/api/collaborateur/pointages", {
