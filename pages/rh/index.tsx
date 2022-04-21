@@ -9,10 +9,10 @@ export default function Rh(props: any) {
       className=""
       style={{
         backgroundColor: "#2f9dac",
-        height: "62.5rem",
+        height: "65rem",
       }}
     >
-      <Link href="/" passHref={true}>
+      <form action="/" method="GET">
         <Button
           type="submit"
           style={{ marginLeft: "1rem" }}
@@ -22,7 +22,7 @@ export default function Rh(props: any) {
         >
           <span className="connexionText">Page Accueil</span>
         </Button>
-      </Link>
+      </form>
       <h1
         style={{
           paddingTop: "2rem",
